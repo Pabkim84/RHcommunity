@@ -3,8 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.its.membershipboard.dto.MemberDTO" alias="member" />
-        <typeAlias type="com.its.membershipboard.dto.BoardDTO" alias="board" />
-        <typeAlias type="com.its.membershipboard.dto.CommentDTO" alias="comment" />
+        <typeAlias type="com.its.rhCommunity.dto.MemberDTO" alias="member" />
+        <typeAlias type="com.its.rhCommunity.dto.CommentDTO" alias="comment" />
+        <typeAlias type="com.its.rhCommunity.dto.AttendanceDTO" alias="attendance" />
+        <typeAlias type="com.its.rhCommunity.dto.AnnualHolidayDTO" alias="holiday" />
+        <typeAlias type="com.its.rhCommunity.dto.RequestBoardDTO" alias="board" />
+        <typeAlias type="com.its.rhCommunity.dto.ReserveConsultationDTO" alias="reserve" />
+
     </typeAliases>
 </configuration>
