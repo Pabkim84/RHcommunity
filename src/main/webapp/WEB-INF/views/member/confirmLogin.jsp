@@ -2,16 +2,13 @@
   Created by IntelliJ IDEA.
   User: user
   Date: 2022-06-07
-  Time: 오전 9:13
+  Time: 오전 10:02
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-
-<!doctype html>
 <html lang="en">
 <head>
-<title></title>
+    <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -43,21 +40,23 @@
         .form-custom{
             border: 1px solid lightgray;
             border-radius: 5%;
-            background-color: rgb(77,84,102) !important;
+            background-color: rgba(215,215,215,0.5) !important;
         }
         .form-floating {
             margin: 20px;
         }
 
     </style>
+
+
     <!-- Custom styles for this template -->
     <link href="../../../resources/css/signin.css" rel="stylesheet">
 </head>
 <body class="text-center">
 
 <main class="form-signin">
-    <form action="/member/login" name="login" method="post" class="form-custom"  >
-        <h1 class="h3 mb-3 fw-normal mt-5" style="color: whitesmoke">Login</h1>
+    <form action="login()" method="post" class="form-custom"  >
+        <h1 class="h3 mb-3 fw-normal mt-5">Login</h1>
 
         <div class="form-floating">
             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -68,24 +67,12 @@
             <label for="floatingPassword">비밀번호</label>
         </div>
 
-        <div class="checkbox mb-3">
-            <label style="color: whitesmoke">
-                <input type="checkbox" value="remember-me"> 아이디기억
-            </label>
-        </div>
-        <input type="button" class="btn btn-secondary btn-lg" style="width: 130px"  onclick="login()" value="Login">
-        <input type="button" class="btn btn-secondary btn-lg" style="width: 130px"  onclick="signUp()" value="SignUp">
-        <p class="mt-5 mb-3" style="color: whitesmoke">&copy; 2017–2022</p>
+        <input type="button" class="btn btn-secondary btn-lg" style="width: 260px"  value="Login">
+        <p class="mt-5 mb-3 text-muted"></p>
     </form>
 </main>
 </body>
-<script>
-const signUp = () => {
-  location.href="/member/signUp";
-}
-const login = () => {
-  login.submit();
-}
-</script>
 </html>
 
+</body>
+</html>

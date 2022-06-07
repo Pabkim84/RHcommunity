@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="../../../resources/colorlib-regform-36/css/style.css"/>
     <style type="text/css">
         .page-content {
-            background: rgba(26,32,53,0.8) !important;
+            background: white !important;
         }
         .form-right {
             background-color: rgba(32,41,64,0.8) !important;
@@ -33,9 +33,9 @@
 <body class="form-v10">
 <div class="page-content">
     <div class="form-v10-content">
-        <form class="form-detail" action="#" method="post" id="myform">
+        <form class="form-detail" action="/member/save" method="post" enctype="multipart/form-data">
             <div class="form-left">
-                <h2>사원정보</h2>
+                <h2 style="color: dimgrey">사원정보</h2>
                     <div class="form-row">
                         <input type="text" name="memberId" id="memberId" class="input-text" placeholder="아이디" required>
                     </div>
@@ -43,11 +43,11 @@
                         <input type="text" name="memberPassword" id="memberPassword" class="input-text" placeholder="비밀번호" required>
                     </div>
                     <div class="form-row">
-                        <input type="text" name="first_name" id="first_name" class="input-text" placeholder="사원명" required>
+                        <input type="text" name="memberName" id="memberName" class="input-text" placeholder="사원명" required>
                     </div>
                 <div class="form-row">
-                    <select name="dept">
-                        <option class="option" value="dept">부서명</option>
+                    <select name="memberDept">
+                        <option class="option" value="">부서명</option>
                         <option class="option" value="executive">임원진</option>
                         <option class="option" value="admin">경영관리팀</option>
                         <option class="option" value="secretary">비서팀</option>
@@ -63,8 +63,8 @@
 						</span>
                 </div>
                 <div class="form-row">
-                    <select name="position">
-                        <option value="position">직급</option>
+                    <select name="memberPosition">
+                        <option value="">직급</option>
                         <option value="director">임원급</option>
                         <option value="generalManager">부장급</option>
                         <option value="deputyGeneralManager">차장급</option>
@@ -79,7 +79,7 @@
 						</span>
                 </div>
                 <div class="form-row">
-                    <input type="file" name="profile" class="company" id="profile" value="사진첨부" style="background-color: lightgray" required>
+                    <input type="file" name="memberProfile" class="company" id="profile" value="사진첨부" style="background-color: lightgray" required>
                 </div>
 
             </div>
@@ -89,25 +89,25 @@
                     <input type="text" name="memberIdNum" class="company" id="memberIdNum" placeholder="주민등록번호" required>
                 </div>
                 <div class="form-row">
-                    <input type="text" name="birthDay" class="company" id="birthDay" placeholder="생년월일" required>
+                    <input type="text" name="MemberBirthDay" class="company" id="birthDay" placeholder="생년월일" required>
                 </div>
                 <div class="form-row">
-                    <input type="text" name="address" class="company" id="address" placeholder="거주지" required>
+                    <input type="text" name="memberAddress" class="company" id="address" placeholder="거주지" required>
                 </div>
                 <div class="form-group">
                     <div class="form-row form-row-1">
                         <input type="text" name="firstNum" class="code" id="firstNum" placeholder="010" required>
                     </div>
                     <div class="form-row form-row-2">
-                        <input type="text" name="mobile" class="phone" id="mobile" placeholder="전화번호" required>
+                        <input type="text" name="memberMobile" class="phone" id="mobile" placeholder="전화번호" required>
                     </div>
                 </div>
                 <div class="form-row">
-                    <input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="이메일주소">
+                    <input type="text" name="memberEmail" id="your_email" class="input-text" required placeholder="이메일주소">
                 </div>
                 <div class="form-checkbox">
                     <label class="container"><p>I do accept the <a href="#" class="text">Terms and Conditions</a> of your site.</p>
-                        <input type="checkbox" name="checkbox" required>
+                        <input type="checkbox">
                         <span class="checkmark"></span>
                     </label>
                 </div>
