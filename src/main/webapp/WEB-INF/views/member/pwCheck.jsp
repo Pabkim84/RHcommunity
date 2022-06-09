@@ -55,24 +55,29 @@
 <body class="text-center">
 
 <main class="form-signin">
-    <form action="login()" method="post" class="form-custom"  >
-        <h1 class="h3 mb-3 fw-normal mt-5">Login</h1>
-
+    <form action="/member/pwCheck" name="pwCheck1" method="post" class="form-custom"  >
+        <h1 class="h3 mb-3 fw-normal mt-5">비밀번호 확인</h1>
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">아이디</label>
+            <input type="hidden" name="id" value="${memberDTO.id}">
+            <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+            <label for="loginPassword">비밀번호</label>
         </div>
-        <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">비밀번호</label>
-        </div>
-
-        <input type="button" class="btn btn-secondary btn-lg" style="width: 260px"  value="Login">
+        <input type="button" onclick="pwCheck(${memberDTO.memberPassword})" class="btn btn-secondary btn-lg" style="width: 260px"  value="비밀번호 확인">
         <p class="mt-5 mb-3 text-muted"></p>
     </form>
 </main>
 </body>
+<script>
+    const pwCheck = (pw1) => {
+        const pw2 = document.getElementById("loginPassword").value;
+        if(pw1==pw2){
+            alert("비밀번호가 일치합니다.");
+            pwCheck1.submit();
+        } else {
+            alert("비밀번호가 일치하지 않습니다.");
+        }
+
+    }
+</script>
 </html>
 
-</body>
-</html>

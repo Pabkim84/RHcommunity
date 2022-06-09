@@ -56,16 +56,16 @@
 <body class="text-center">
 
 <main class="form-signin">
-    <form action="/member/login" name="login" method="post" class="form-custom"  >
+    <form action="/member/login" method="post" class="form-custom">
         <h1 class="h3 mb-3 fw-normal mt-5" style="color: whitesmoke">Login</h1>
 
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">아이디</label>
+            <input type="text" class="form-control" id="memberId" name="memberId">
+            <label for="memberId">아이디</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">비밀번호</label>
+            <input type="password" class="form-control" id="memberPassword" name="memberPassword">
+            <label for="memberPassword">비밀번호</label>
         </div>
 
         <div class="checkbox mb-3">
@@ -73,7 +73,7 @@
                 <input type="checkbox" value="remember-me"> 아이디기억
             </label>
         </div>
-        <input type="button" class="btn btn-secondary btn-lg" style="width: 130px"  onclick="login()" value="Login">
+        <input type="submit" class="btn btn-secondary btn-lg" style="width: 130px"  value="Login">
         <input type="button" class="btn btn-secondary btn-lg" style="width: 130px"  onclick="signUp()" value="SignUp">
         <p class="mt-5 mb-3" style="color: whitesmoke">&copy; 2017–2022</p>
     </form>
@@ -82,9 +82,6 @@
 <script>
 const signUp = () => {
   location.href="/member/signUp";
-}
-const login = () => {
-  login.submit();
 }
 </script>
 </html>

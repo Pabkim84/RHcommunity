@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemberDTO {
-    private Long Id;
+    private Long id;
     private String memberId;
     private String memberPassword;
     private String memberName;
@@ -26,4 +26,8 @@ public class MemberDTO {
     private MultipartFile memberProfile;
     private String memberProfileName;
     private String firstNum;
+    private int salary;
+    private String educationLv;
+    private String career;
+    private String certificate;
 }
