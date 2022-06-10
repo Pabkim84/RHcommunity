@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,9 +15,12 @@ public class AttendanceDTO {
     private String memberName;
     private String memberDept;
     private String memberPosition;
-    private String selectContents;
-    private String period;
-    private String contentsDate;
-    private int amount;
-    private String note;
+    private Timestamp memberJoinDate;
+    private String attendanceDate;
+    private String absenceDate;
+    private Timestamp earlyLateDate;
+    private float earlyLateTime;
+    private float overTime;
+    private int countAttendance;
+    private int countAbsenceDate;
 }

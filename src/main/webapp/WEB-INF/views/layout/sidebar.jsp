@@ -18,7 +18,7 @@
 <head>
     <meta charset="utf-8" />
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    <link rel="apple-touch-icon" sizes="76x76" href="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\img\apple-icon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">    <link rel="apple-touch-icon" sizes="76x76" href="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\img\apple-icon.png">
     <link rel="icon" type="image/png" href="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\img\favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
@@ -42,6 +42,7 @@
         @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
         li.nav-item{
             margin: 0 auto 0 auto;
+            font-size: small;
 
         }
         .dropdown{
@@ -93,6 +94,9 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
+        .bi bi-person-lines-fill{
+
+        }
     </style>
 </head>
 
@@ -118,8 +122,8 @@
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="/member/memberList">
-                        <i class="material-icons">person</i>
-                        <p>사원목록</p>
+                        <sub><i class="bi bi-person-lines-fill" style="font-size: 20px"></i></sub>
+                        <p class="fontCustom" style="vertical-align: center">사원목록</p>
                     </a>
                 </li>
                 <li class="nav-item ">
@@ -129,40 +133,40 @@
                     </a>
                 </li>
                 <li class="nav-item ">
+                    <a class="nav-link" href="#">
+                        <sub><i class="bi bi-alarm-fill" style="font-size: 20px"></i></sub>
+                        <p>근태관리</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">
+                       <sub><i class="bi bi-calendar-week" style="font-size: 20px"></i></sub>
+                        <p>휴가관리</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
                     <a class="nav-link" href="./tables.html">
-                        <i class="material-icons">content_paste</i>
-                        <p>Table List</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                        <div class="dropdown">
-                            <button class="dropbtn">
-                                <i class="material-icons">library_books</i>
-                                <p>서류발급 서비스</p>
-                            </button>
-                            <div class="dropdown-content">
-                                <a href="/documents/certificate">재직증명서</a>
-                                <a href="#">급여명세서</a>
-                            </div>
-                        </div>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./icons.html">
-                        <i class="material-icons">bubble_chart</i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="./map.html">
-                        <i class="material-icons">location_ons</i>
-                        <p>Maps</p>
+                        <sub><i class="bi bi-receipt-cutoff" style="font-size: 20px"></i></sub>
+                        <p>인사상담예약</p>
                     </a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="./notifications.html">
-                        <i class="material-icons">notifications</i>
-                        <p>Notifications</p>
+                        <i class="material-icons">content_paste</i>
+                        <p>민원요청게시판</p>
                     </a>
+                </li>
+                <li class="nav-item ">
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                            <i class="material-icons">library_books</i>
+                            <p>서류발급 서비스</p>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="/documents/certificate">재직증명서</a>
+                            <a href="#">급여명세서</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>

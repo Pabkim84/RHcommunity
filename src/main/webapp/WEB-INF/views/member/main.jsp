@@ -99,13 +99,16 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-header card-header-warning card-header-icon">
-                                <div class="card-icon">
-                                    <i class="material-icons">content_copy</i>
+                                <div class="card-icon" style="width: 86px; height: 86px">
+                                    <a href="/member/attendance?id=${sessionScope.id}">
+                                    <i class="bi bi-stopwatch" style="width: 100px; margin-right: 12px; font-size: 30px"></i>
+                                    <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>출근체크</sup></p>
+                                    </a>
                                 </div>
-                                <p class="card-category">Used Space</p>
-                                <h3 class="card-title">49/50
-                                    <small>GB</small>
+                                <p class="card-category">근무일수</p>
+                                <h3 class="card-title">64/200
                                 </h3>
+                                <small>일</small>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -118,11 +121,15 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-header card-header-success card-header-icon">
-                                <div class="card-icon">
-                                    <i class="material-icons">store</i>
-                                </div>
-                                <p class="card-category">Revenue</p>
-                                <h3 class="card-title">$34,245</h3>
+                                    <div class="card-icon" style="width: 86px; height: 86px">
+                                        <a href="#">
+                                        <i class="bi bi-clock" style="width: 100px; margin-right: 12px; font-size: 30px"></i>
+                                        <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>퇴근체크</sup></p>
+                                        </a>
+                                    </div>
+                                <p class="card-category">조기퇴근일수</p>
+                                <h3 class="card-title">5/200</h3>
+                                <small>일</small>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -134,11 +141,15 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-header card-header-danger card-header-icon">
-                                <div class="card-icon">
+                                <div class="card-icon" style="width: 86px; height: 86px">
+                                    <a href="#">
                                     <i class="material-icons">info_outline</i>
+                                    <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>결근</sup></p>
+                                    </a>
                                 </div>
-                                <p class="card-category">Fixed Issues</p>
-                                <h3 class="card-title">75</h3>
+                                <p class="card-category">결근일수</p>
+                                <h3 class="card-title">3/200</h3>
+                                <small>일</small>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -150,11 +161,15 @@
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                         <div class="card card-stats">
                             <div class="card-header card-header-info card-header-icon">
-                                <div class="card-icon">
+                                <div class="card-icon"  style="width: 86px; height: 86px">
+                                    <a href="#">
                                     <i class="fa fa-twitter"></i>
+                                    <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>휴가</sup></p>
+                                    </a>
                                 </div>
-                                <p class="card-category">Followers</p>
-                                <h3 class="card-title">+245</h3>
+                                <p class="card-category">휴가일수</p>
+                                <h3 class="card-title">8/14</h3>
+                                <small>일</small>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">

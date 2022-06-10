@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>재직증명서</title>
@@ -82,15 +83,15 @@
             <tbody>
                 <tr>
                     <th>사원명</th>
-                    <td>김형수</td>
+                    <td>${memberDTO.memberName}</td>
                     <th>생년월일</th>
-                    <td>1984.06.22</td>
+                    <td>${memberDTO.memberBirthDay}</td>
                 </tr>
                 <tr>
                     <th>주소</th>
-                    <td>인천광역시 미추홀구 도화2,3동 아파트 몇동 몇호</td>
+                    <td>${memberDTO.memberAddress}</td>
                     <th>연락처</th>
-                    <td>010-2532-4122</td>
+                    <td>${memberDTO.memberMobile}</td>
                 </tr>
             </tbody>
         </table>
@@ -111,13 +112,14 @@
                 </tr>
                 <tr>
                     <th>부서</th>
-                    <td>개발팀</td>
+                    <td>${memberDTO.memberDept}</td>
                     <th>직위</th>
-                    <td>대리</td>
+                    <td>${memberDTO.memberPosition}</td>
                 </tr>
                 <tr>
                     <th>재직기간</th>
-                    <td colspan="3">2020.01.01 부터 2022.06.01 현재까지</td>
+                    <td colspan="3"><fmt:formatDate pattern="yyyy년 MM월 dd일"
+                                                    value="${memberDTO.memberJoinDate}"></fmt:formatDate> <span style="font-weight: 700">부터 </span> <span class="text" id="current_date2"></span> <span style="font-weight: 700">현재까지</span></td>
                 </tr>
             </tbody>
         </table>
@@ -131,7 +133,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td colspan="4" rowspan="4">은행 제출용</td>
+                    <td colspan="4" rowspan="4"><textarea style="border: 0; border-spacing: 0" cols="100%" rows="4" placeholder="용도를 적어주세요"></textarea></td>
                  </tr>
             </tbody>
         </table>
@@ -139,7 +141,7 @@
     <div class="text-container">
         <p class="text">상기와 같이 재직하고 있음을 증명합니다.</p>
         <p class="text" id="current_date"></p>
-        <span>RHcompany 대표이사</span> <span class="text-name">김새롬</span>   <span class="text-auth">(인)</span>
+        <span>RHcompany 대표이사</span> <span class="text-name">김새롬</span>   <span class="text-auth">(인)<sub><img src="http://dojangnara.net/web/product/big/201507/1362_shop1_638289.jpg" style="width: 100px" alt="회사직인"></sub></span>
     </div>
 </div>
 </body>
@@ -149,5 +151,6 @@
         month = date.getMonth() + 1;
         day = date.getDate();
         document.getElementById("current_date").innerHTML = year + "년 " + month + "월 " + day + "일" ;
+        document.getElementById("current_date2").innerHTML = year + "년 " + month + "월 " + day + "일" ;
     </script>
 </html>
