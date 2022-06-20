@@ -21,6 +21,12 @@
         delete from members_table where id=#{id}
     </delete>
     <update id="update" parameterType="member">
-        update members_table set memberPassword=#{memberPassword}, memberDept=#{memberDept}, memberPosition=#{memberPosition}, memberAddress=#{memberAddress}, memberEmail=#{memberEmail}, memberMobile=#{memberMobile},memberProfileName=#{memberProfileName}, salary=#{salary}, educationLv=#{educationLv}, career=#{career}, certificate=#{certificate} where id=#{id}
+        update members_table set memberPassword=#{memberPassword}, memberDept=#{memberDept}, memberPosition=#{memberPosition}, memberAddress=#{memberAddress}, memberEmail=#{memberEmail}, memberMobile=#{memberMobile},memberProfileName=#{memberProfileName}, salary=#{salary}, educationLv=#{educationLv}, career=#{career}, certificate=#{certificate}, countAttendance=#{countAttendance}, countAbsenceDate=#{countAbsenceDate}, countLate=#{countLate}, countEarly=#{countEarly} where id=#{id}
     </update>
+    <update id="update2" parameterType="member">
+        update members_table set countEarly=#{countEarly} where id=#{id}
+    </update>
+    <select id="findNew" resultType="member">
+        select * from members_table where date_format(memberJoinDate,'%Y-%m')=date_format(now(),'%Y-%m')
+    </select>
 </mapper>

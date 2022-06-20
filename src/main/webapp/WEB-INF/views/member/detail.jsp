@@ -32,9 +32,9 @@
             margin-bottom: 50px;
         }
         .sub-container{
-            margin: 0 15% 0 15%;
-            background-color: #1f283e;
+            background-color: rgba(31,40,62,0.95);
             height: 70%;
+            width: 120%;
             border-radius: 5%;
         }
         .outBtn{

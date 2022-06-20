@@ -30,4 +30,11 @@ public class MemberDTO {
     private String educationLv;
     private String career;
     private String certificate;
+    private int countAttendance;
+    private int countAbsenceDate;
+    private int countLate;
+    private int countEarly;
+    private int totalHoliday;
+    private int usedHoliday;
+    private int restHoliday;
 }

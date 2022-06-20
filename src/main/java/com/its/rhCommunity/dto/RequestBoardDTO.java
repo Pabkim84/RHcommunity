@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RequestBoardDTO {
-    private Long Id;
+    private Long id;
     private String writerId;
     private String dept;
     private String position;

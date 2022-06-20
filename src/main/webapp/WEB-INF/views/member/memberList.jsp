@@ -16,12 +16,12 @@
         body{
             background-color: rgb(26,32,53);
             color: whitesmoke;
+            margin-left: 300px;
+            margin-top: 200px;
+
         }
         td{
            color: lightgray!important;
-        }
-        .container{
-            margin-top: 200px;
         }
         .tableCaption {
             text-align: center;
@@ -32,13 +32,17 @@
         }
         .sub-container{
             horiz-align: center;
-            margin-left: 5%;
-            background-color: #1f283e;
+            margin-left: 0%;
+            background-color: rgba(31,40,62,0.95);
             height: 70%;
+            width: 120%;
             border-radius: 5%;
         }
         td{
             background-color: rgb(31,40,62);
+        }
+        .container{
+
         }
     </style>
 </head>

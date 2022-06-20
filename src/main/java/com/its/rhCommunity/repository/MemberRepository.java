@@ -35,4 +35,7 @@ public class MemberRepository {
     public void update(MemberDTO memberDTO) throws IOException {
         sql.update("Member.update", memberDTO);
     }
+    public List<MemberDTO> findNew() {
+       return sql.selectList("Member.findNew");
+    }
 }

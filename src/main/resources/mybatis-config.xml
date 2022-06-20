@@ -9,6 +9,7 @@
         <typeAlias type="com.its.rhCommunity.dto.AnnualHolidayDTO" alias="holiday" />
         <typeAlias type="com.its.rhCommunity.dto.RequestBoardDTO" alias="board" />
         <typeAlias type="com.its.rhCommunity.dto.ReserveConsultationDTO" alias="reserve" />
+        <typeAlias type="com.its.rhCommunity.dto.ReserveDateTimeDTO" alias="reserveDate" />
 
     </typeAliases>
 </configuration>

@@ -19,10 +19,29 @@ public class DocumentsController {
     @GetMapping("/certificate")
     public String certificate(HttpSession session, Model model){
         Long id = (Long) session.getAttribute("id");
-        System.out.println("id = " + id);
         MemberDTO memberDTO = memberService.findById(id);
-        System.out.println("memberDTO = " + memberDTO);
         model.addAttribute("memberDTO", memberDTO);
         return "documents/certificateOfEmployment";
+    }
+    @GetMapping("/payStub")
+    public String paystub(HttpSession session, Model model){
+        Long id = (Long) session.getAttribute("id");
+        MemberDTO memberDTO = memberService.findById(id);
+        model.addAttribute("memberDTO", memberDTO);
+        return "/documents/payStub";
+    }
+    @GetMapping("/absence-form")
+    public String absenceForm(HttpSession session, Model model){
+        Long id = (Long) session.getAttribute("id");
+        MemberDTO memberDTO = memberService.findById(id);
+        model.addAttribute("memberDTO", memberDTO);
+        return "/documents/absenceForm";
+    }
+    @GetMapping("/hollyDay-form")
+    public String hollyDayForm(HttpSession session, Model model){
+        Long id = (Long) session.getAttribute("id");
+        MemberDTO memberDTO = memberService.findById(id);
+        model.addAttribute("memberDTO", memberDTO);
+        return "/documents/hollyDayForm";
     }
 }

@@ -1,6 +1,7 @@
 package com.its.rhCommunity.controller;
 
 import com.its.rhCommunity.dto.MemberDTO;
+import com.its.rhCommunity.service.AttendanceService;
 import com.its.rhCommunity.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,12 @@ MemberController {
     @Autowired
     private MemberService memberService;
     @GetMapping("/main")
-    public String main(){
+    public String main(Model model, HttpSession session, Long id){
+        id = (Long) session.getAttribute("id");
+        MemberDTO memberDTO = memberService.findById(id);
+        List<MemberDTO> newMemberList = memberService.findNew();
+        model.addAttribute("newList", newMemberList);
+        model.addAttribute("loginDTO", memberDTO);
         return "/member/main";
     }
     @GetMapping("/signUp")
@@ -38,9 +44,12 @@ MemberController {
         return "/member/login";
     }
     @PostMapping("/login")
-    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session) {
+    public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session, Model model) {
         MemberDTO loginDTO = memberService.login(memberDTO);
         if(loginDTO!=null){
+            List<MemberDTO> newMemberList = memberService.findNew();
+            model.addAttribute("newList", newMemberList);
+            model.addAttribute("loginDTO", loginDTO);
             session.setAttribute("loginId", loginDTO.getMemberId());
             session.setAttribute("id", loginDTO.getId());
             return "/member/main";

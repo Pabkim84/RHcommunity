@@ -19,7 +19,7 @@ public class MemberService {
         String memberProfileName = memberProfile.getOriginalFilename();
         memberProfileName = System.currentTimeMillis() + "-" + memberProfileName;
         memberDTO.setMemberProfileName(memberProfileName);
-        String savePath="D:\\spring_img\\" + memberProfileName;
+        String savePath="E:\\/developement_pk/source/spring_framework/spring_img/\\" + memberProfileName;
         if (!memberProfile.isEmpty()) {
             memberProfile.transferTo(new File(savePath));
         }
@@ -46,11 +46,16 @@ public class MemberService {
         MultipartFile memberProfile = memberDTO.getMemberProfile();
         String memberProfileName = memberProfile.getOriginalFilename();
         memberProfileName = System.currentTimeMillis() + "-" + memberProfileName;
-        String savePath="D:\\spring_img\\" + memberProfileName;
+        String savePath="E:\\/developement_pk/source/spring_framework/spring_img/\\" + memberProfileName;
         if (!memberProfile.isEmpty()) {
             memberProfile.transferTo(new File(savePath));
             memberDTO.setMemberProfileName(memberProfileName);
         }
         memberRepository.update(memberDTO);
+    }
+
+    public List<MemberDTO> findNew() {
+        return memberRepository.findNew();
+
     }
 }

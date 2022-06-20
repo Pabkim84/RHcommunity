@@ -18,14 +18,9 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
     <title>Signin Template · Bootstrap v5.1</title>
-
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
-
-
-
     <!-- Bootstrap core CSS -->
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;

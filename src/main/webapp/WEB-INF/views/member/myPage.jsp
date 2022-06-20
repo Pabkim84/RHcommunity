@@ -17,12 +17,11 @@
         body{
             background-color: rgb(26,32,53);
             color: whitesmoke;
+            margin-left: 300px;
+            margin-top: 200px;
         }
         td{
             color: lightgray!important;
-        }
-        .container{
-            margin-top: 200px;
         }
         .tableCaption {
             text-align: center;
@@ -32,9 +31,10 @@
             margin-bottom: 50px;
         }
         .sub-container{
-            margin: 0 15% 0 15%;
-            background-color: #1f283e;
+            margin: 0 0% 0 0%;
+            background-color: rgba(31,40,62,0.95);
             height: 70%;
+            width: 120%;
             border-radius: 5%;
         }
         .outBtn{
@@ -51,42 +51,70 @@
         <table class="table table-striped table-hover" style="color: whitesmoke; text-align: center; border-color: #3C4858">
             <thead>
             <tr>
-                <th>
+                <th colspan="2" style="text-align: center">
                     <img src="${pageContext.request.contextPath}/upload/${memberDTO.memberProfileName}"
                          alt="" height="100" width="100">
                 </th>
+                <th scope="col">사원번호</th>
+                <td style="border-top: 0">${memberDTO.id}</td>
+                <th scope="col">사원아이디</th>
+                <td style="border-top: 0">${memberDTO.memberId}</td>
             </tr>
             <tr>
-                <th scope="col">사원번호</th>
-                <td>${memberDTO.id}</td>
+
                 <th scope="col">사원명</th>
                 <td>${memberDTO.memberName}</td>
-                <th scope="col">사원아이디</th>
-                <td>${memberDTO.memberId}</td>
-            </tr>
-            <tr>
                 <th scope="col">부서</th>
                 <td>${memberDTO.memberDept}</td>
                 <th scope="col">직급</th>
                 <td>${memberDTO.memberPosition}</td>
+            </tr>
+            <tr>
                 <th scope="col">입사일</th>
                 <td><fmt:formatDate pattern="yyyy-MM-dd"
                                     value="${memberDTO.memberJoinDate}"></fmt:formatDate></td>
+                <th scope="col">연봉</th>
+                <td>${memberDTO.salary}</td>
+                <th scope="col">이메일</th>
+                <td colspan="2">${memberDTO.memberEmail}</td>
             </tr>
             <tr>
                 <th scope="col">주민등록번호</th>
                 <td>${memberDTO.memberIdNum}</td>
-                <th scope="col"></th>
-                <td></td>
-                <th scope="col"></th>
-                <td></td>
-            </tr>
-            <tr>
-                <th scope="col">이메일</th>
-                <td colspan="2">${memberDTO.memberEmail}</td>
-
+                <th scope="col">생년월일</th>
+                <td>${memberDTO.memberBirthDay}</td>
                 <th scope="col">연락처</th>
                 <td colspan="2">${memberDTO.memberMobile}</td>
+            </tr>
+            <tr>
+                <th scope="col">최종학력</th>
+                <td colspan="2">${memberDTO.educationLv}</td>
+                <th scope="col">자격증</th>
+                <td colspan="2">${memberDTO.certificate}</td>
+            </tr>
+            <tr>
+                <th scope="col">경력사항</th>
+                <td colspan="5">${memberDTO.career}</td>
+            </tr>
+            <tr>
+                <th scope="col">출근일수</th>
+                <td colspan="2">${memberDTO.countAttendance}</td>
+                <th scope="col">결근일수</th>
+                <td colspan="2">${memberDTO.countAbsenceDate}</td>
+            </tr>
+            <tr>
+                <th scope="col">지각일수</th>
+                <td colspan="2">${memberDTO.countLate}</td>
+                <th scope="col">조퇴일수</th>
+                <td colspan="2">${memberDTO.countEarly}</td>
+            </tr>
+            <tr>
+                <th scope="col">전체 휴가일수</th>
+                <td>${memberDTO.totalHoliday}</td>
+                <th scope="col">사용 휴가일수</th>
+                <td>${memberDTO.usedHoliday}</td>
+                <th scope="col">잔여 휴가일수</th>
+                <td>${memberDTO.restHoliday}</td>
             </tr>
             <tr>
                 <td colspan="5" class="outBtn"><button class="btn btn-secondary" id="update" onclick="updateMember(${memberDTO.id})">정보수정</button></td>

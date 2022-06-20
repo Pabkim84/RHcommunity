@@ -18,6 +18,8 @@
 <head>
     <meta charset="utf-8" />
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <link rel="apple-touch-icon" sizes="76x76" href="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\img\apple-icon.png">
     <link rel="icon" type="image/png" href="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\img\favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -33,15 +35,38 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../../../resources/css/demo.css" rel="stylesheet" />
     <style>
+        body{
+            background-color: rgb(26,32,53);
+            color: whitesmoke;
+            margin-left: 300px;
+            margin-top: 200px;
+        }
         .custom-wrapper{
-            margin: 0 0 0 15%;
+            margin: 0 5% 0 15%;
+        }
+        .tableTh{
+            width: 25%;
+        }
+        .content{
+            width: 100%;
+        }
+        .footer{
+            width: 100%;
+        }
+        .sub-container{
+            margin: 0 0% 0 0%;
+            background-color: rgba(31,40,62,0.95);
+            height: 70%;
+            width: 120%;
+            border-radius: 5%;
         }
     </style>
 </head>
 
 <body class="dark-edition">
 <jsp:include page="../layout/sidebar.jsp" flush="false"></jsp:include>
-<div class="custom-wrapper">
+<div class="container">
+    <div class="sub-container">
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -51,13 +76,13 @@
                                 <div class="ct-chart" id="dailySalesChart"></div>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Daily Sales</h4>
-                                <p class="card-category">
-                                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                                <h4 class="card-title">이번달 우수사원</h4>
+                                <p class="card-category" style="color: lightgray">
+                                    ${loginDTO.memberName} ${loginDTO.memberDept} ${loginDTO.memberPosition}</p>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">access_time</i> updated 4 minutes ago
+                                    우수사원에 뽑힌걸 축하드립니다.
                                 </div>
                             </div>
                         </div>
@@ -68,12 +93,12 @@
                                 <div class="ct-chart" id="websiteViewsChart"></div>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Email Subscriptions</h4>
-                                <p class="card-category">Last Campaign Performance</p>
+                                <h4 class="card-title">이번달 전체사원의 근태현황</h4>
+                                <p class="card-category" style="color: lightgray">결근률 3.2%, 지각률 5.9%, 조퇴률 2.4%</p>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">access_time</i> campaign sent 2 days ago
+                                    지난달: 결근률 3.6%, 지각률 5.8%, 조퇴률 2.6%
                                 </div>
                             </div>
                         </div>
@@ -84,12 +109,12 @@
                                 <div class="ct-chart" id="completedTasksChart"></div>
                             </div>
                             <div class="card-body">
-                                <h4 class="card-title">Completed Tasks</h4>
-                                <p class="card-category">Last Campaign Performance</p>
+                                <h4 class="card-title">이번달 나의 근태현황</h4>
+                                <p class="card-category" style="color: lightgray">결근률 3.3%, 지각률 2.4%, 조퇴률 5.8%</p>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">access_time</i> campaign sent 2 days ago
+                                    지난달: 결근률 3.3%, 지각률 2.8%, 조퇴률 5.5%
                                 </div>
                             </div>
                         </div>
@@ -100,20 +125,19 @@
                         <div class="card card-stats">
                             <div class="card-header card-header-warning card-header-icon">
                                 <div class="card-icon" style="width: 86px; height: 86px">
-                                    <a href="/member/attendance?id=${sessionScope.id}">
+                                    <a href="/attendance/attendance?id=${sessionScope.id}">
                                     <i class="bi bi-stopwatch" style="width: 100px; margin-right: 12px; font-size: 30px"></i>
                                     <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>출근체크</sup></p>
                                     </a>
                                 </div>
                                 <p class="card-category">근무일수</p>
-                                <h3 class="card-title">64/200
+                                <h3 class="card-title">${loginDTO.countAttendance}
                                 </h3>
                                 <small>일</small>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons text-warning">warning</i>
-                                    <a href="#pablo" class="warning-link">Get More Space...</a>
+                                    <i class="material-icons">date_range</i> Last 24 Hours
                                 </div>
                             </div>
                         </div>
@@ -122,13 +146,13 @@
                         <div class="card card-stats">
                             <div class="card-header card-header-success card-header-icon">
                                     <div class="card-icon" style="width: 86px; height: 86px">
-                                        <a href="#">
+                                        <a href="/attendance/closing?id=${sessionScope.id}">
                                         <i class="bi bi-clock" style="width: 100px; margin-right: 12px; font-size: 30px"></i>
                                         <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>퇴근체크</sup></p>
                                         </a>
                                     </div>
                                 <p class="card-category">조기퇴근일수</p>
-                                <h3 class="card-title">5/200</h3>
+                                <h3 class="card-title">${loginDTO.countEarly}</h3>
                                 <small>일</small>
                             </div>
                             <div class="card-footer">
@@ -142,18 +166,18 @@
                         <div class="card card-stats">
                             <div class="card-header card-header-danger card-header-icon">
                                 <div class="card-icon" style="width: 86px; height: 86px">
-                                    <a href="#">
+                                    <a href="/documents/absence-form">
                                     <i class="material-icons">info_outline</i>
-                                    <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>결근</sup></p>
+                                    <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>결근사유서</sup></p>
                                     </a>
                                 </div>
                                 <p class="card-category">결근일수</p>
-                                <h3 class="card-title">3/200</h3>
+                                <h3 class="card-title">${loginDTO.countAbsenceDate}</h3>
                                 <small>일</small>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">local_offer</i> Tracked from Github
+                                    <i class="material-icons">date_range</i> This Month
                                 </div>
                             </div>
                         </div>
@@ -162,18 +186,18 @@
                         <div class="card card-stats">
                             <div class="card-header card-header-info card-header-icon">
                                 <div class="card-icon"  style="width: 86px; height: 86px">
-                                    <a href="#">
+                                    <a href="/documents/hollyDay-form">
                                     <i class="fa fa-twitter"></i>
-                                    <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>휴가</sup></p>
+                                    <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>휴가신청</sup></p>
                                     </a>
                                 </div>
                                 <p class="card-category">휴가일수</p>
-                                <h3 class="card-title">8/14</h3>
+                                <h3 class="card-title">${loginDTO.restHoliday}/${loginDTO.totalHoliday}</h3>
                                 <small>일</small>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
-                                    <i class="material-icons">update</i> Just Updated
+                                    <i class="material-icons">update</i> Today Updated
                                 </div>
                             </div>
                         </div>
@@ -183,16 +207,45 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">Employees Stats</h4>
-                                <p class="card-category">New employees on 15th September, 2016</p>
+                                <h4 class="card-title">이번달 신입사원</h4>
+                                <p class="card-category">입사를 환영합니다. 많이 도와주세요.</p>
                             </div>
                             <div class="card-body table-responsive">
                                 <table class="table table-hover">
                                     <thead class="text-warning">
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Salary</th>
-                                    <th>Country</th>
+                                    <th class="tableTh">사원명</th>
+                                    <th class="tableTh">부서</th>
+                                    <th class="tableTh">직급</th>
+                                    <th class="tableTh">입사일</th>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${newList}" var="newList">
+                                    <tr>
+                                        <td>${newList.memberName}</td>
+                                        <td>${newList.memberDept}</td>
+                                        <td>${newList.memberPosition}</td>
+                                        <td><fmt:formatDate pattern="yyyy-MM-dd"
+                                                            value="${newList.memberJoinDate}"></fmt:formatDate></td>
+                                    </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-tabs card-header-warning">
+                                <h4 class="card-title">이번달 휴가인원</h4>
+                                <p class="card-category">푹쉬고 새로운 마음가짐으로 일하세요.</p>
+                            </div>
+                            <div class="card-body table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="text-warning">
+                                    <th class="tableTh">사원명</th>
+                                    <th class="tableTh">부서</th>
+                                    <th class="tableTh">직급</th>
+                                    <th class="tableTh">휴가기간</th>
                                     </thead>
                                     <tbody>
                                     <tr>
@@ -221,251 +274,6 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-tabs card-header-warning">
-                                <div class="nav-tabs-navigation">
-                                    <div class="nav-tabs-wrapper">
-                                        <span class="nav-tabs-title">Tasks:</span>
-                                        <ul class="nav nav-tabs" data-tabs="tabs">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" href="#profile" data-toggle="tab">
-                                                    <i class="material-icons">bug_report</i> Bugs
-                                                    <div class="ripple-container"></div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#messages" data-toggle="tab">
-                                                    <i class="material-icons">code</i> Website
-                                                    <div class="ripple-container"></div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="#settings" data-toggle="tab">
-                                                    <i class="material-icons">cloud</i> Server
-                                                    <div class="ripple-container"></div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="profile">
-                                        <table class="table">
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked>
-                                                            <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="">
-                                                            <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="">
-                                                            <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked>
-                                                            <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="tab-pane" id="messages">
-                                        <table class="table">
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked>
-                                                            <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="">
-                                                            <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="tab-pane" id="settings">
-                                        <table class="table">
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="">
-                                                            <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked>
-                                                            <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                                                </td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <label class="form-check-label">
-                                                            <input class="form-check-input" type="checkbox" value="" checked>
-                                                            <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>Sign contract for "What are conference organizers afraid of?"</td>
-                                                <td class="td-actions text-right">
-                                                    <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
-                                                        <i class="material-icons">close</i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -511,73 +319,7 @@
         </script>
     </div>
 </div>
-<div class="fixed-plugin">
-    <div class="dropdown show-dropdown">
-        <a href="#" data-toggle="dropdown">
-            <i class="fa fa-cog fa-2x"> </i>
-        </a>
-        <ul class="dropdown-menu">
-            <li class="header-title"> Sidebar Filters</li>
-            <li class="adjustments-line">
-                <a href="javascript:void(0)" class="switch-trigger active-color">
-                    <div class="badge-colors ml-auto mr-auto">
-                        <span class="badge filter badge-purple active" data-color="purple"></span>
-                        <span class="badge filter badge-azure" data-color="azure"></span>
-                        <span class="badge filter badge-green" data-color="green"></span>
-                        <span class="badge filter badge-warning" data-color="orange"></span>
-                        <span class="badge filter badge-danger" data-color="danger"></span>
-                    </div>
-                    <div class="clearfix"></div>
-                </a>
-            </li>
-            <li class="header-title">Images</li>
-            <li>
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                    <img src="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\img\sidebar-1.jpg" alt="">
-                </a>
-            </li>
-            <li class="active">
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                    <img src="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\img\sidebar-2.jpg" alt="">
-                </a>
-            </li>
-            <li>
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                    <img src="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\img\sidebar-3.jpg" alt="">
-                </a>
-            </li>
-            <li>
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                    <img src="..E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\img\sidebar-4.jpg" alt="">
-                </a>
-            </li>
-            <li class="button-container">
-                <a href="https://www.creative-tim.com/product/material-dashboard-dark" target="_blank" class="btn btn-primary btn-block">Free Download</a>
-            </li>
-            <!-- <li class="header-title">Want more components?</li>
-                <li class="button-container">
-                    <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
-                      Get the pro version
-                    </a>
-                </li> -->
-            <li class="button-container">
-                <a href="https://demos.creative-tim.com/material-dashboard-dark/docs/2.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
-                    View Documentation
-                </a>
-            </li>
-            <li class="button-container github-star">
-                <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard/tree/dark-edition" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-            </li>
-            <li class="header-title">Thank you for 95 shares!</li>
-            <li class="button-container text-center">
-                <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-                <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
-                <br>
-                <br>
-            </li>
-        </ul>
-    </div>
-</div>
+
 <!--   Core JS Files   -->
 <script src="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\js\core\jquery.min.js"></script>
 <script src="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\js\core\popper.min.js"></script>
@@ -608,56 +350,6 @@
             $sidebar_responsive = $('body > .navbar-collapse');
 
             window_width = $(window).width();
-
-            $('.fixed-plugin a').click(function(event) {
-                // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-                if ($(this).hasClass('switch-trigger')) {
-                    if (event.stopPropagation) {
-                        event.stopPropagation();
-                    } else if (window.event) {
-                        window.event.cancelBubble = true;
-                    }
-                }
-            });
-
-            $('.fixed-plugin .active-color span').click(function() {
-                $full_page_background = $('.full-page-background');
-
-                $(this).siblings().removeClass('active');
-                $(this).addClass('active');
-
-                var new_color = $(this).data('color');
-
-                if ($sidebar.length != 0) {
-                    $sidebar.attr('data-color', new_color);
-                }
-
-                if ($full_page.length != 0) {
-                    $full_page.attr('filter-color', new_color);
-                }
-
-                if ($sidebar_responsive.length != 0) {
-                    $sidebar_responsive.attr('data-color', new_color);
-                }
-            });
-
-            $('.fixed-plugin .background-color .badge').click(function() {
-                $(this).siblings().removeClass('active');
-                $(this).addClass('active');
-
-                var new_color = $(this).data('background-color');
-
-                if ($sidebar.length != 0) {
-                    $sidebar.attr('data-background-color', new_color);
-                }
-            });
-
-            $('.fixed-plugin .img-holder').click(function() {
-                $full_page_background = $('.full-page-background');
-
-                $(this).parent('li').siblings().removeClass('active');
-                $(this).parent('li').addClass('active');
-
 
                 var new_image = $(this).find("img").attr('src');
 
@@ -753,8 +445,6 @@
                 setTimeout(function() {
                     clearInterval(simulateWindowResize);
                 }, 1000);
-
-            });
         });
     });
 </script>
@@ -766,5 +456,4 @@
     });
 </script>
 </body>
-
 </html>

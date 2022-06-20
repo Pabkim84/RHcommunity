@@ -4,5 +4,26 @@
 
 
 <mapper namespace="Attendance">
-
+    <insert id="save" parameterType="attendance">
+        insert into attendance_table(numId, memberName, memberDept, memberPosition, memberJoinDate, attendanceDate, absenceDate, lateDate)
+        values(#{numId}, #{memberName}, #{memberDept}, #{memberPosition}, #{memberJoinDate}, #{attendanceDate}, #{absenceDate}, #{lateDate})
+    </insert>
+    <select id="attendanceList" parameterType="attendance" resultType="attendance">
+        select * from attendance_table where numId = #{numId}
+    </select>
+    <select id="findAll" resultType="attendance">
+        select * from attendance_table where numId = #{id}
+    </select>
+    <select id="dupleCheck" parameterType="attendance" resultType="attendance">
+        select attendanceDate from attendance_table where numId=#{numId} and str_to_date(attendanceDate, '%Y-%m-%d') = current_date
+    </select>
+    <select id="dupleCheck2" parameterType="attendance" resultType="attendance">
+        select * from attendance_table where numId=#{id} and str_to_date(attendanceDate, '%Y-%m-%d') = current_date
+    </select>
+    <select id="findById" parameterType="Long" resultType="attendance">
+        select * from attendance_table where numId = #{id}
+    </select>
+    <update id="update" parameterType="attendance">
+        update attendance_table set closingDate=#{closingDate}, earlyDate=#{earlyDate} where id=#{id}
+    </update>
 </mapper>

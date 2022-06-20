@@ -2,39 +2,75 @@ package com.its.rhCommunity.service;
 
 import com.its.rhCommunity.dto.AttendanceDTO;
 import com.its.rhCommunity.dto.MemberDTO;
+import com.its.rhCommunity.repository.AttendanceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+
 
 @Service
 public class AttendanceService {
-    public AttendanceDTO save(MemberDTO memberDTO) throws ParseException {
-//오늘날짜 yyyy-MM-dd로 생성
-        String dateTime = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
+    @Autowired
+    private AttendanceRepository attendanceRepository;
 
-//yyyy-MM-dd 포맷 설정
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-//비교할 date와 today를 데이터 포맷으로 변경
-        Date date = new Date(dateFormat.parse(vo.getPrgm_edate()).getTime());
-        Date today = new Date(dateFormat.parse(dateTime).getTime());
-
-//compareTo메서드를 통한 날짜비교
-        int compare = date.compareTo(today);
-
-//조건문
-        if(compare > 0) {
-            System.out.println("date가 today보다 큽니다.(date > today)");
-        }else if(compare < 0) {
-            System.out.println("today가 date보다 큽니다.(date < today)");
-        }else {
-            System.out.println("today와 date가 같습니다.(date = today)");
+    public List<AttendanceDTO> save(MemberDTO memberDTO) throws ParseException {
+        LocalDateTime dateTime = LocalDateTime.now();
+        LocalTime time = LocalTime.now();
+        LocalTime regTime = LocalTime.of(9, 00, 00);
+        String attendanceDate = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        String absenceDate = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        AttendanceDTO attendanceDTO = new AttendanceDTO();
+        attendanceDTO.setNumId(memberDTO.getId());
+        attendanceDTO.setMemberName(memberDTO.getMemberName());
+        attendanceDTO.setMemberDept(memberDTO.getMemberDept());
+        attendanceDTO.setMemberPosition(memberDTO.getMemberPosition());
+        attendanceDTO.setMemberJoinDate(memberDTO.getMemberJoinDate());
+        AttendanceDTO dupleCheck = attendanceRepository.dupleCheck(attendanceDTO);
+        if (dupleCheck == null) {
+            if (time.isBefore(regTime)) {
+                attendanceDTO.setAttendanceDate(attendanceDate);
+                memberDTO.setCountAttendance(memberDTO.getCountAttendance() + 1);
+            } else {
+                attendanceDTO.setAttendanceDate(attendanceDate);
+                memberDTO.setCountAttendance(memberDTO.getCountAttendance() + 1);
+                attendanceDTO.setLateDate(attendanceDate);
+                if (attendanceDTO.getLateDate() == null) {
+                    attendanceDTO.setAbsenceDate(absenceDate);
+                    memberDTO.setCountAbsenceDate(memberDTO.getCountAbsenceDate() + 1);
+                } else {
+                    memberDTO.setCountLate(memberDTO.getCountLate() + 1);
+                }
+            }
+            attendanceRepository.save(attendanceDTO, memberDTO);
         }
-
-
+        return attendanceRepository.attendanceDTOList(attendanceDTO);
     }
+
+    public List<AttendanceDTO> findAll(Long id) {
+        return attendanceRepository.findAll(id);
+    }
+    public List<AttendanceDTO> update(MemberDTO memberDTO) throws ParseException{
+        AttendanceDTO attendanceDTO = attendanceRepository.dupleCheck2(memberDTO.getId());
+        if (attendanceDTO.getClosingDate() == null) {
+            LocalDateTime dateTime = LocalDateTime.now();
+            String closingDate = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            LocalTime time = LocalTime.now();
+            LocalTime regTime = LocalTime.of(18, 00, 00);
+            if(time.isAfter(regTime)){
+                attendanceDTO.setClosingDate(closingDate);
+            } else {
+                attendanceDTO.setClosingDate(closingDate);
+                attendanceDTO.setEarlyDate(closingDate);
+                memberDTO.setCountEarly(memberDTO.getCountEarly() + 1);
+            }
+            attendanceRepository.update(attendanceDTO, memberDTO);
+        }
+        return attendanceRepository.findAll(attendanceDTO.getNumId());
+    }
+
 }
