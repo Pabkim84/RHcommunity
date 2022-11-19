@@ -7,13 +7,15 @@ import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class MemberRepository {
     @Autowired
     private SqlSessionTemplate sql;
     public void save(MemberDTO memberDTO) {
-        sql.insert("Member.save", memberDTO);
+        int result = sql.insert("Member.save", memberDTO);
+        System.out.println("result = " + result);
     }
 
     public MemberDTO login(MemberDTO memberDTO) {
@@ -38,4 +40,22 @@ public class MemberRepository {
     public List<MemberDTO> findNew() {
        return sql.selectList("Member.findNew");
     }
+
+    public List<MemberDTO> pagingList(Map<String, Integer> pagingParam) {
+        return sql.selectList("Member.pagingList", pagingParam);
+    }
+
+    public int memberCount() {
+        return sql.selectOne("Member.count");
+    }
+
+    public MemberDTO findByMemberId(String memberId) {
+        System.out.println("=============memberRepository/findByMemberId=============");
+        return sql.selectOne("Member.findByMemberId", memberId);
+    }
+
+    public List<MemberDTO> findByName(String memberName) {
+        return sql.selectList("Member.findByName", memberName);
+    }
+
 }

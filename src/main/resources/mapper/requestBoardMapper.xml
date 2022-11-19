@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Board">
+    <select id="findAll" parameterType="java.util.HashMap" resultType="board">
+        select * from requestBoard_table ORDER BY id DESC limit #{start}, #{limit}
+    </select>
+    <insert id="save" parameterType="board">
+        insert into requestBoard_table (numId, memberName, memberDept, memberPosition,title, contents, createdDate, fileName)
+        values (#{numId}, #{memberName},#{memberDept}, #{memberPosition}, #{title}, #{contents}, now(), #{fileName})
+    </insert>
+    <select id="findById" parameterType="Long" resultType="board">
+        select * from requestBoard_table where id=#{id}
+    </select>
+    <update id="update" parameterType="board">
+        update requestBoard_table set title=#{title}, contents=#{contents}, fileName=#{fileName} where id=#{id}
+    </update>
+    <delete id="delete" parameterType="Long">
+        delete from requestBoard_table where id=#{id}
+    </delete>
+    <select id="count" resultType="int">
+        SELECT COUNT(id) FROM requestBoard_table
+    </select>
+    <update id="updateHits" parameterType="Long">
+        UPDATE requestBoard_table SET hits = hits+1 WHERE id=#{id}
+    </update>
+</mapper>

@@ -6,13 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class RequestBoardRepository {
     @Autowired
     private SqlSessionTemplate sql;
-    public List<RequestBoardDTO> findAll() {
-        return sql.selectList("Board.findAll");
+    public List<RequestBoardDTO> findAll(Map<String, Integer> pagingParam) {
+
+        return sql.selectList("Board.findAll", pagingParam);
     }
 
     public void save(RequestBoardDTO requestBoardDTO) {
@@ -29,5 +31,14 @@ public class RequestBoardRepository {
 
     public void delete(Long id) {
         sql.delete("Board.delete", id);
+    }
+
+    public int boardCount() {
+        return sql.selectOne("Board.count");
+
+    }
+
+    public void updateHits(Long id) {
+        sql.update("Board.updateHits", id);
     }
 }

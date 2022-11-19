@@ -4,9 +4,9 @@
 
 
 <mapper namespace="Member">
-    <insert id="save" parameterType="member">
-        insert into members_table (memberId, memberPassword, memberName, memberDept, memberPosition, memberJoinDate, memberIdNum, memberBirthDay, memberAddress, memberEmail, memberMobile, memberProfileName, salary, educationLv, career, certificate)
-        values (#{memberId}, #{memberPassword}, #{memberName}, #{memberDept}, #{memberPosition}, now(), #{memberIdNum}, #{memberBirthDay}, #{memberAddress}, #{memberEmail}, #{memberMobile}, #{memberProfileName}, #{salary}, #{educationLv}, #{career}, #{certificate})
+    <insert id="save" parameterType="member" keyProperty="id" useGeneratedKeys="true">
+        insert into members_table (memberId, memberPassword, memberName, groupNo, memberGroup, deptNo, memberDept, memberTeam, memberDuty, memberPosition, memberJoinDate, memberIdNum, memberBirthDay, gender, health, maritalStatus, impairment, levImpairment, memberAddress, memberEmail, memberMobile, memberProfileName, salary, stockOption, contractOption, hobby, specialty, religion, education1, education2, career1, career2, career3,license)
+        values (#{memberId}, #{memberPassword}, #{memberName}, #{groupNo}, #{memberGroup}, #{deptNo}, #{memberDept}, #{memberTeam}, #{memberDuty}, #{memberPosition}, DATE_FORMAT(now(),'%Y-%m-%d'), #{memberIdNum}, #{memberBirthDay}, #{gender}, #{health}, #{maritalStatus}, #{impairment}, #{levImpairment}, #{memberAddress}, #{memberEmail}, #{memberMobile}, #{memberProfileName}, #{salary}, #{stockOption}, #{contractOption}, #{hobby}, #{specialty}, #{religion}, #{education1}, #{education2}, #{career1}, #{career2}, #{career3}, #{license})
     </insert>
     <select id="login" parameterType="member" resultType="member">
         select * from members_table where memberId=#{memberId} and memberPassword=#{memberPassword}
@@ -21,12 +21,25 @@
         delete from members_table where id=#{id}
     </delete>
     <update id="update" parameterType="member">
-        update members_table set memberPassword=#{memberPassword}, memberDept=#{memberDept}, memberPosition=#{memberPosition}, memberAddress=#{memberAddress}, memberEmail=#{memberEmail}, memberMobile=#{memberMobile},memberProfileName=#{memberProfileName}, salary=#{salary}, educationLv=#{educationLv}, career=#{career}, certificate=#{certificate}, countAttendance=#{countAttendance}, countAbsenceDate=#{countAbsenceDate}, countLate=#{countLate}, countEarly=#{countEarly} where id=#{id}
-    </update>
-    <update id="update2" parameterType="member">
-        update members_table set countEarly=#{countEarly} where id=#{id}
+        update members_table set memberPassword=#{memberPassword}, memberName=#{memberName}, groupNo=#{groupNo}, memberGroup=#{memberGroup}, deptNo=#{deptNo}, memberDept=#{memberDept}, memberTeam=#{memberTeam}, memberDuty=#{memberDuty}, memberPosition=#{memberPosition}, memberIdNum=#{memberIdNum}, memberBirthday=#{memberBirthDay}, gender=#{gender}, health=#{health}, maritalStatus=#{maritalStatus}, impairment=#{impairment}, levImpairment=#{levImpairment}, memberAddress=#{memberAddress}, memberEmail=#{memberEmail}, memberMobile=#{memberMobile},memberProfileName=#{memberProfileName}, salary=#{salary}, stockOption=#{stockOption}, contractOption=#{contractOption}, hobby=#{hobby}, specialty=#{specialty}, religion=#{religion}, education1=#{education1}, education2=#{education2}, career1=#{career1}, career2=#{career2}, career3=#{career3}, license=#{license} where id=#{id}
     </update>
     <select id="findNew" resultType="member">
         select * from members_table where date_format(memberJoinDate,'%Y-%m')=date_format(now(),'%Y-%m')
     </select>
+    <select id="pagingList" parameterType="java.util.HashMap" resultType="member">
+        select * from members_table order by id desc limit #{start}, #{limit}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(id) from members_table
+    </select>
+    <select id="findByMemberId" parameterType="String" resultType="member">
+        SELECT * FROM members_table WHERE memberId = #{memberId}
+    </select>
+    <select id="findByName" parameterType="String" resultType="member">
+        SELECT * FROM members_table WHERE memberName = #{memberName}
+    </select>
+<!--    <select id="findLastMember" resultType="member">-->
+<!--        SELECT * FROM members_table WHERE id = max(id)-->
+<!--    </select>-->
 </mapper>

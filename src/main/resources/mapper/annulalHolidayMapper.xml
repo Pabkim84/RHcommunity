@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Holiday">
+    <insert id="save" parameterType="holiday">
+        insert into annualHoliday_table(numId, btnId, holidayDate, totalVacations, usedVacations, restVacations)
+        values (#{numId}, #{btnId},  #{holidayDate}, #{totalVacations}, 1, #{restVacations})
+    </insert>
+
+    <select id="count" parameterType="Long" resultType="int">
+        select count(usedVacations) from annualHoliday_table where numId=#{id};
+    </select>
+    <select id="findByNumId" parameterType="Long" resultType="holiday">
+        select * from annualHoliday_table where numId=#{id} ORDER BY holidayDate asc;
+    </select>
+    <select id="findLastDateByNumId" parameterType="Long" resultType="holiday">
+        SELECT * FROM annualHoliday_table WHERE numId=#{id} AND id=(SELECT MAX(id) FROM annualHoliday_table WHERE numId=#{id})
+    </select>
+</mapper>

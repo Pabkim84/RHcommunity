@@ -96,10 +96,9 @@
             </tr>
             <tr>
                 <th>입사일</th>
-                <td><fmt:formatDate pattern="yyyy년 MM월 dd일"
-                                    value="${memberDTO.memberJoinDate}"></fmt:formatDate></td>
+                <td>${memberDTO.memberJoinDate}</td>
                 <th>급여지급일</th>
-                <td><span id="payDay"></span></td>
+                <td><span id="payDay">${salaryDTO.payDay}</span></td>
             </tr>
             </tbody>
         </table>
@@ -114,7 +113,7 @@
                 <th rowspan="7" style="width: 15%">지급항목</th>
                 <th colspan="2" style="width: 30%">항목명</th>
                 <th colspan="2" style="width: 25%">금액</th>
-                <th colspan="2" style="width: 30%">산출방법</th>
+                <th colspan="2" style="width: 30%">비고</th>
             </tr>
             <tr>
                 <td colspan="2">월기본급여액</td>
@@ -122,28 +121,28 @@
                 <td colspan="2"></td>
             </tr>
             <tr>
-                <td colspan="2"></td>
-                <td colspan="2" id="id1">1</td>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="2" id="id2">1</td>
+                <td colspan="2">주휴수당</td>
+                <td colspan="2" id="id1">${salaryDTO.holidayAllowance}</td>
                 <td colspan="2"></td>
             </tr>
             <tr>
-                <td colspan="2"></td>
-                <td colspan="2" id="id3">1</td>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-                <td colspan="2" id="id4">1</td>
+                <td colspan="2">직책수당</td>
+                <td colspan="2" id="id2">${salaryDTO.positionAllowance}</td>
                 <td colspan="2"></td>
             </tr>
             <tr>
-                <th colspan="3" id="sum1">합계</th>
-                <td colspan="3"></td>
+                <td colspan="2">식비지원</td>
+                <td colspan="2" id="id3">${salaryDTO.mealAllowance}</td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td colspan="2">휴가수당</td>
+                <td colspan="2" id="id4">${salaryDTO.vacationPay}</td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <th colspan="3">합계</th>
+                <td colspan="3" id="sum1">${salaryDTO.totalExtraPay}</td>
             </tr>
             </thead>
             <tbody>
@@ -151,45 +150,45 @@
                 <th rowspan="8">공제항목</th>
                 <th colspan="2">항목명</th>
                 <th colspan="2">금액</th>
-                <th colspan="2">산출방법</th>
+                <th colspan="2">비고</th>
             </tr>
             <tr>
                 <td colspan="2">국민연금 4.5%</td>
-                <td colspan="2" id="id5">1</td>
+                <td colspan="2" id="id5">${salaryDTO.nationalPension}</td>
                 <td colspan="2"></td>
             </tr>
             <tr>
                 <td colspan="2">건강보험 3.495%</td>
-                <td colspan="2" id="id6">1</td>
+                <td colspan="2" id="id6">${salaryDTO.healthInsurance}</td>
                 <td colspan="2"></td>
             </tr>
             <tr>
                 <td colspan="2">장기요양 건강보험의 12.27%</td>
-                <td colspan="2" id="id7">1</td>
+                <td colspan="2" id="id7">${salaryDTO.longTermCareInsurance}</td>
                 <td colspan="2"></td>
             </tr>
             <tr>
                 <td colspan="2">고용보험 0.8%</td>
-                <td colspan="2" id="id8">1</td>
+                <td colspan="2" id="id8">${salaryDTO.employmentInsurance}</td>
                 <td colspan="2"></td>
             </tr>
             <tr>
                 <td colspan="2">소득세 35%</td>
-                <td colspan="2" id="id9">1</td>
+                <td colspan="2" id="id9">${salaryDTO.incomeTax}</td>
                 <td colspan="2"></td>
             </tr>
             <tr>
                 <td colspan="2">지방소득세 소득세의 10%</td>
-                <td colspan="2" id="id10">1</td>
+                <td colspan="2" id="id10">${salaryDTO.localIncomeTax}</td>
                 <td colspan="2"></td>
             </tr>
             <tr>
-                <th colspan="3" id="sum2">합계</th>
-                <td colspan="3"></td>
+                <th colspan="3">합계</th>
+                <td colspan="3" id="sum2">${salaryDTO.totalDeduction}</td>
             </tr>
             <tr>
-                <th colspan="4" id="totalSum">실수령액</th>
-                <td colspan="3"></td>
+                <th colspan="4">실수령액</th>
+                <td colspan="3" id="totalSum"></td>
             </tr>
             </tbody>
         </table>
@@ -201,30 +200,36 @@
 </div>
 </body>
 <script>
-    date = new Date();
-    year = date.getFullYear();
-    month = date.getMonth() + 1;
-    day = date.getDate();
-    let lastDate = new Date(year, month, 0);
-    document.getElementById("title").innerHTML = year+"년 "+month+"월 "+"급여명세서";
-    document.getElementById("payDay").innerHTML = year+"년 "+month+"월 "+lastDate.getDate()+"일";
-    const total = parseFloat(${memberDTO.salary/12}).toFixed(2);
-    const salary = total.toLocaleString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    document.getElementById("salary").innerHTML = salary+"원"
-    const id1_v = document.getElementById("id1").value;
-    const id2_v = document.getElementById("id2").value;
-    const id3_v = document.getElementById("id3").value;
-    const id4_v = document.getElementById("id4").value;
-    const id5_v = document.getElementById("id5").value;
-    const id6_v = document.getElementById("id6").value;
-    const id7_v = document.getElementById("id7").value;
-    const id8_v = document.getElementById("id8").value;
-    const id9_v = document.getElementById("id9").value;
-    const id10_v = document.getElementById("id10").value;
-    const sum1_v = salary+Number(id1_v)+Number(id2_v)+Number(id3_v)+Number(id4_v);
-    const sum2_v = Number(id5_v)+Number(id6_v)+Number(id7_v)+Number(id8_v)+Number(id9_v)+Number(id10_v);
-    document.getElementById("sum1").innerHTML = String(sum1_v);
-    document.getElementById("sum2").innerHTML = String(sum2_v);
+    window.onload=function (){
+        date = new Date(${salaryDTO.payDay});
+        // year = date.getFullYear();
+        // month = date.getMonth() + 1;
+        // day = date.getDate();
+        // let lastDate = new Date(year, month, 0);
+        document.getElementById("title").innerHTML = "${salaryDTO.payDay} 급여명세서";
+        // document.getElementById("title").innerHTML = year+"년 "+month+"월 "+"급여명세서";
+        // document.getElementById("payDay").innerHTML = year+"년 "+month+"월 "+lastDate.getDate()+"일";
+        const total = parseFloat(${salaryDTO.baseSalary}).toFixed(2);
+        const salary = total.toLocaleString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        // document.getElementById("salary").innerHTML = salary+"원"
+        // const id1_v = document.getElementById("id1").value;
+        // const id2_v = document.getElementById("id2").value;
+        // const id3_v = document.getElementById("id3").value;
+        // const id4_v = document.getElementById("id4").value;
+        // const id5_v = document.getElementById("id5").value;
+        // const id6_v = document.getElementById("id6").value;
+        // const id7_v = document.getElementById("id7").value;
+        // const id8_v = document.getElementById("id8").value;
+        // const id9_v = document.getElementById("id9").value;
+        // const id10_v = document.getElementById("id10").value;
+        const sum1_v = Number(${salaryDTO.totalExtraPay});
+        const sum2_v = Number(${salaryDTO.totalDeduction});
+        const totalSum = Number(${salaryDTO.actualPayment});
+        document.getElementById("sum1").innerHTML = String(sum1_v+" 원");
+        document.getElementById("sum2").innerHTML = String(sum2_v+" 원");
+        document.getElementById("totalSum").innerHTML = totalSum.toLocaleString('ko-KR')+" 원";
+    }
+
 
 </script>
 </html>

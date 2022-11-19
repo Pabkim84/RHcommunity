@@ -8,8 +8,8 @@
         <typeAlias type="com.its.rhCommunity.dto.AttendanceDTO" alias="attendance" />
         <typeAlias type="com.its.rhCommunity.dto.AnnualHolidayDTO" alias="holiday" />
         <typeAlias type="com.its.rhCommunity.dto.RequestBoardDTO" alias="board" />
-        <typeAlias type="com.its.rhCommunity.dto.ReserveConsultationDTO" alias="reserve" />
-        <typeAlias type="com.its.rhCommunity.dto.ReserveDateTimeDTO" alias="reserveDate" />
-
+        <typeAlias type="com.its.rhCommunity.dto.NoticeDTO" alias="notice" />
+        <typeAlias type="com.its.rhCommunity.dto.SalaryDTO" alias="salary" />
+        <typeAlias type="com.its.rhCommunity.dto.AttendanceAdminDTO" alias="attAdminDTO" />
     </typeAliases>
 </configuration>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Attendance">
+    <insert id="save" parameterType="attendance">
+        insert into attendance_table(numId, workedTime, overTime, today, attendanceTime, absenceDate, lateTime)
+        values(#{numId}, #{workedTime}, #{overTime}, #{today}, #{attendanceTime}, #{absenceDate}, #{lateTime})
+    </insert>
+    <select id="attendanceList" parameterType="attendance" resultType="attendance">
+        select * from attendance_table where numId = #{numId}
+    </select>
+    <select id="findAll" resultType="attendance">
+        select * from attendance_table where numId = #{id} order by today desc
+    </select>
+    <select id="dupleCheck" parameterType="attendance" resultType="attendance">
+        select attendanceTime from attendance_table where numId=#{numId} and today = current_date
+    </select>
+    <select id="dupleCheck2" parameterType="Long" resultType="attendance">
+        select * from attendance_table where numId=#{id} and today = current_date
+    </select>
+    <select id="findById" parameterType="Long" resultType="attendance">
+        select * from attendance_table where numId = #{id}
+    </select>
+    <update id="update" parameterType="attendance">
+        update attendance_table set closingTime=#{closingTime}, earlyTime=#{earlyTime} where id=#{id}
+    </update>
+    <select id="findByLastDay" parameterType="Long" resultType="attendance">
+        select * from attendance_table where numId=#{id} and today=(select max(today) from attendance_table)
+    </select>
+    <select id="totalWorkedTime" parameterType="Long" resultType="Integer">
+        select sum(workedTime) from attendance_table where numid=#{id}
+    </select>
+    <select id="avgWorkedTime" parameterType="Long" resultType="Integer">
+        select avg(workedTime) from attendance_table where numid=#{id}
+    </select>
+    <select id="overTime" parameterType="Long" resultType="Integer">
+        select sum(overTime) from attendance_table where numid=#{id}
+    </select>
+    <select id="totalLateCount" parameterType="Long" resultType="Integer">
+        select count(lateTime) from attendance_table where lateTime >0 and numid=#{id}
+    </select>
+    <select id="totalLateTime" parameterType="Long" resultType="Integer">
+        select sum(lateTime) from attendance_table where numid=#{id}
+    </select>
+    <select id="totalEarlyCount" parameterType="Long" resultType="Integer">
+        select count(earlyTime) from attendance_table where earlyTime >0 and numid=#{id}
+    </select>
+    <select id="totalEarlyTime" parameterType="Long" resultType="Integer">
+        select sum(earlyTime) from attendance_table where numid=#{id}
+    </select>
+    <select id="totalAbsenceCount" parameterType="Long" resultType="Integer">
+        select count(absenceDate) from attendance_table where numid=#{id}
+    </select>
+    <select id="findAllByMonth" resultType="attAdminDTO">
+        select numId,
+               truncate((sum(workedTime)-(workedTime*count(absenceDate))),2) as 'totalWorkedTime',
+               truncate((sum(workedTime)-(workedTime*count(absenceDate)))/(count(attendanceTime)+count(absenceDate)),2) as 'avgWorkedTime',
+               count(attendanceTime) as 'countAttendanceDate',
+               count(absenceDate) as 'countAbsenceDate',
+               sum(lateTime) as 'totalLateTime',
+               sum(earlyTime) as 'totalEarlyTime'
+        from attendance_table where date_format(today, '%y-%m')= date_format(now(), '%y-%m') group by numId
+    </select>
+    <select id="findTotalLateTime" resultType="int">
+        select count(lateTime) as 'totalLateTime' from attendance_table where lateTime>0 and date_format(today, '%y-%m')= date_format(now(), '%y-%m')
+    </select>
+    <select id="findTotalEarlyTime" resultType="int">
+        select count(earlyTime) as 'totalEarlyTime' from attendance_table where earlyTime>0 and date_format(today, '%y-%m')= date_format(now(), '%y-%m')
+    </select>
+    <select id="findOverTime" resultType="int">
+        select sum(closingTime-attendanceTime)as 'overTime' from attendance_table where (closingTime-attendanceTime)>9  and date_format(today, '%y-%m')= date_format(now(), '%y-%m')
+    </select>
+</mapper>

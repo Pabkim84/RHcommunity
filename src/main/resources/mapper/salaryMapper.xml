@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Salary">
+    <insert id="save" parameterType="salary">
+        INSERT INTO salary_table(numId,memberName,memberDept,memberPosition,salary,payDay,baseSalary,holidayAllowance, vacationPay, nationalPension, mealAllowance, healthInsurance, bonus, employmentInsurance,longTermCareInsurance,incomeTax,localIncomeTax,etcPay1, etcPay2, etcDeduction1, etcDeduction2, actualPayment,totalExtraPay,totalDeduction)
+        VALUES (#{numId},#{memberName},#{memberDept},#{memberPosition},#{salary},#{payDay},#{baseSalary},#{holidayAllowance}, #{vacationPay}, #{nationalPension}, #{mealAllowance},#{healthInsurance},#{bonus},#{employmentInsurance},#{longTermCareInsurance},#{incomeTax},#{localIncomeTax}, #{etcPay1}, #{etcPay2}, #{etcDeduction1}, #{etcDeduction2},#{actualPayment},#{totalExtraPay},#{totalDeduction})
+    </insert>
+    <select id="findByIdAndPayDay" parameterType="salary" resultType="salary">
+        SELECT * FROM salary_table WHERE numId = #{numId} and payDay = #{payDay}
+    </select>
+    <select id="findAllById" parameterType="Long" resultType="salary">
+        SELECT * FROM salary_table WHERE numId = #{numId}
+    </select>
+    <update id="update" parameterType="salary">
+        UPDATE salary_table SET memberName=#{memberName},memberDept=#{memberDept},memberPosition=#{memberPosition},salaryv=#{salary},baseSalary=#{baseSalary},nationalPension=#{nationalPension},healthInsurance=#{healthInsurance},employmentInsurance=#{employmentInsurance},longTermCareInsurance=#{longTermCareInsurance},incomeTax=#{incomeTax},localIncomeTax=#{localIncomeTax}, etcPay1=#{etcPay1}, etcPay2=#{etcPay2}, etcDeduction1=#{etcDeduction1}, etcDeduction2=#{etcDeduction2},actualPayment=#{actualPayment},totalExtraPay=#{totalExtraPay},totalDeduction=#{totalDeduction} WHERE numId=#{numId} and payDay=#{payDay}
+    </update>
+    <select id="findPayDayById" parameterType="salary" resultType="salary">
+        SELECT * FROM salary_table WHERE numId = #{numId} and payDay=#{payDay}
+    </select>
+    <select id="findAll" resultType="salary">
+        SELECT * FROM salary_table ORDER BY payDay DESC
+    </select>
+    <select id="findAllPayDays" resultType="String">
+        SELECT date_format(payDay,'%Y') FROM salary_table GROUP BY date_format(payDay,'%Y') ORDER BY date_format(payDay,'%Y') DESC
+    </select>
+    <select id="count" resultType="int">
+        select count(id) from salary_table
+    </select>
+    <select id="pagingList" parameterType="java.util.HashMap" resultType="salary">
+        select * from salary_table order by id desc limit #{start}, #{limit}
+    </select>
+    <select id="findAllByPayYear" parameterType="String" resultType="salary">
+        SELECT * FROM salary_table WHERE date_format(payDay,'%Y')=#{payYear} ORDER BY id DESC
+    </select>
+    <select id="findLastPayById" parameterType="Long" resultType="salary">
+        SELECT * FROM salary_table WHERE numId=#{numId} and payDay=(SELECT max(payDay) FROM salary_table)
+    </select>
+</mapper>

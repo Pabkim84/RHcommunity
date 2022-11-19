@@ -1,459 +1,457 @@
-<!--
-=========================================================
-* Material Dashboard Dark Edition - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-dark
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: esteb
+  Date: 2022-09-21
+  Time: 오후 9:17
+  To change this template use File | Settings | File Templates.
+--%>
 <html lang="ko">
-
 <head>
     <meta charset="utf-8" />
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    <link rel="apple-touch-icon" sizes="76x76" href="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\img\apple-icon.png">
-    <link rel="icon" type="image/png" href="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\img\favicon.png">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>
-        Material Dashboard Dark Edition by Creative Tim
-    </title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <!-- CSS Files -->
-    <link href="../../../resources/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../../../resources/css/demo.css" rel="stylesheet" />
+    <title>Title</title>
+    <script src="/resources/js/jquery.js"></script>
+
     <style>
-        body{
+        body {
+            margin: 0;
             background-color: rgb(26,32,53);
-            color: whitesmoke;
-            margin-left: 300px;
-            margin-top: 200px;
+            font-family: 'Source Sans Pro', sans-serif;
+            overflow: hidden;
         }
-        .custom-wrapper{
-            margin: 0 5% 0 15%;
+        .main-container {
+            background-color: lightgrey;
+            width: 1183px;
+            height: 635px;
+            position: relative;
+            left: 100px;
         }
-        .tableTh{
+
+        .subTitle {
+            display: flex;
+            position: absolute;
+            top: 15px;
+            left: 2%;
+            width: 45%;
+            float: left;
+            margin-top: 25px;
+            color: rgba(30,30,30,0.9);
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .left-1{
+            top: 15px;
+        }
+        .right-1{
+            top: 15px;
+            left: 50%;
+        }
+        .left-2{
+            top: 270px;
+        }
+        .right-2{
+            top: 270px;
+            left: 50%;
+        }
+        .left-3{
+            top: 390px;
+        }
+        .right-3{
+            top: 390px;
+            left: 50%;
+        }
+        .left-4{
+            top: 510px;
+        }
+        .right-4{
+            top: 510px;
+            left: 50%;
+        }
+        .subTitle img {
+            position: relative;
+            top: 5px;
+            margin-right: 3px;
+            width: 2%;
+            height: 2%;
+        }
+        .main {
+            position: absolute;
+            top: 65px;
+            left: 2%;
+            width: 47%;
+            height: 200px;
+            border: 1px solid whitesmoke;
+            background-color: whitesmoke;
+            box-shadow: 0px 0px 5px 2px grey inset;
+
+        }
+        .main2{
+            position: absolute;
+            top: 320px;
+            left: 2%;
+            width: 47%;
+            height: 65px;
+            border: 1px solid whitesmoke;
+            background-color: whitesmoke;
+            box-shadow: 0px 0px 5px 2px grey inset;
+        }
+        .main3{
+            position: absolute;
+            top: 440px;
+            left: 2%;
+            width: 47%;
+            height: 65px;
+            border: 1px solid whitesmoke;
+            background-color: whitesmoke;
+            box-shadow: 0px 0px 5px 2px grey inset;
+        }
+        .main4{
+            position: absolute;
+            top: 560px;
+            left: 2%;
+            width: 47%;
+            height: 65px;
+            border: 1px solid whitesmoke;
+            background-color: whitesmoke;
+            box-shadow: 0px 0px 5px 2px grey inset;
+        }
+        .body2 {
+            left: 50%;
+        }
+
+
+
+        .table1 {
+            position: relative;
+            width: 98%;
+            height: 95%;
+            border: 1px solid gray;
+            margin: 5px;
+            border-collapse: collapse;
+        }
+        .table2 {
+            position: relative;
+            width: 98%;
+            height: 95%;
+            border: 1px solid gray;
+            margin: 5px;
+            border-collapse: collapse;
+        }
+        .table3 {
+            position: relative;
+            width: 98%;
+            height: 86%;
+            border: 1px solid gray;
+            margin: 5px;
+            border-collapse: collapse;
+        }
+        tr {
+            width: 100%;
+            border: 1px solid rgba(210,210,210,0.9)
+
+        }
+        .table1 th {
+            height: 20%;
+            font-size: 12px;
+            color: blue;
+            text-align: left;
+            padding-left: 5px;
+
+        }
+        .table1 td {
+            height: 20%;
+            font-size: 12px;
+            color: blue;
+            text-align: left;
+            padding-left: 5px;
+        }
+        .table2 th {
             width: 25%;
+            height: 20%;
+            font-size: 12px;
+            color: dimgray;
+            text-align: center;
+            padding-left: 2px;
         }
-        .content{
-            width: 100%;
+        .table2 td {
+            width: 25%;
+            height: 20%;
+            font-size: 12px;
+            color: gray;
+            text-align: center;
+            padding-left: 2px;
         }
-        .footer{
-            width: 100%;
+        .table3 th {
+            width: 20%;
+            height: 20%;
+            font-size: 12px;
+            color: dimgray;
+            text-align: center;
+            padding-left: 2px;
         }
-        .sub-container{
-            margin: 0 0% 0 0%;
-            background-color: rgba(31,40,62,0.95);
-            height: 70%;
-            width: 120%;
-            border-radius: 5%;
+        .table3 td {
+            width: 20%;
+            height: 20%;
+            font-size: 12px;
+            color: gray;
+            text-align: center;
+            padding-left: 2px;
         }
+        .table1 tr:hover {
+            background-color: lightgrey;
+        }
+        .table2 tr:hover {
+            background-color: lightgrey;
+        }
+        .table3 tr:hover {
+            background-color: lightgrey;
+        }
+        .btn-check {
+            border: 1px solid whitesmoke;
+            width: 66px;
+            height: 64px;
+            position: relative;
+            box-shadow: -3px -3px 0px 0px gray inset;
+        }
+        .btn-check:hover {
+            width: 64px;
+            height: 62px;
+            box-shadow: -1px -1px 0px 0px gray inset;
+        }
+
     </style>
 </head>
+<body>
+<jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
+<div class="main-container">
+    <div class="subTitle left-1"><img src="../../../resources/img/triangle.png">이번달 소식</div>
+    <div class="subTitle right-1"><img src="../../../resources/img/triangle.png">이번달 신입/경력 사원</div>
+    <div class="main body1">
+        <table class="table1">
+            <tr>
+                <th style="width: 70%">새롭게 수정하고 있어요</th>
+                <th style="width: 30%; color: dimgray; text-align: right; padding-right: 5px">2020.06.06.</th>
+            </tr>
+            <tr>
+                <td style="width: 70%">[추석맞이]추석연휴 잘보내세요</td>
+                <td style="width: 30%; color: dimgray; text-align: right; padding-right: 5px">2020.06.06.</td>
 
-<body class="dark-edition">
-<jsp:include page="../layout/sidebar.jsp" flush="false"></jsp:include>
-<div class="container">
-    <div class="sub-container">
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-4 col-lg-12">
-                        <div class="card card-chart">
-                            <div class="card-header card-header-success">
-                                <div class="ct-chart" id="dailySalesChart"></div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">이번달 우수사원</h4>
-                                <p class="card-category" style="color: lightgray">
-                                    ${loginDTO.memberName} ${loginDTO.memberDept} ${loginDTO.memberPosition}</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    우수사원에 뽑힌걸 축하드립니다.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-12">
-                        <div class="card card-chart">
-                            <div class="card-header card-header-warning">
-                                <div class="ct-chart" id="websiteViewsChart"></div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">이번달 전체사원의 근태현황</h4>
-                                <p class="card-category" style="color: lightgray">결근률 3.2%, 지각률 5.9%, 조퇴률 2.4%</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    지난달: 결근률 3.6%, 지각률 5.8%, 조퇴률 2.6%
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-12">
-                        <div class="card card-chart">
-                            <div class="card-header card-header-danger">
-                                <div class="ct-chart" id="completedTasksChart"></div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">이번달 나의 근태현황</h4>
-                                <p class="card-category" style="color: lightgray">결근률 3.3%, 지각률 2.4%, 조퇴률 5.8%</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    지난달: 결근률 3.3%, 지각률 2.8%, 조퇴률 5.5%
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-header card-header-warning card-header-icon">
-                                <div class="card-icon" style="width: 86px; height: 86px">
-                                    <a href="/attendance/attendance?id=${sessionScope.id}">
-                                    <i class="bi bi-stopwatch" style="width: 100px; margin-right: 12px; font-size: 30px"></i>
-                                    <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>출근체크</sup></p>
-                                    </a>
-                                </div>
-                                <p class="card-category">근무일수</p>
-                                <h3 class="card-title">${loginDTO.countAttendance}
-                                </h3>
-                                <small>일</small>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons">date_range</i> Last 24 Hours
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-header card-header-success card-header-icon">
-                                    <div class="card-icon" style="width: 86px; height: 86px">
-                                        <a href="/attendance/closing?id=${sessionScope.id}">
-                                        <i class="bi bi-clock" style="width: 100px; margin-right: 12px; font-size: 30px"></i>
-                                        <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>퇴근체크</sup></p>
-                                        </a>
-                                    </div>
-                                <p class="card-category">조기퇴근일수</p>
-                                <h3 class="card-title">${loginDTO.countEarly}</h3>
-                                <small>일</small>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons">date_range</i> Last 24 Hours
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-header card-header-danger card-header-icon">
-                                <div class="card-icon" style="width: 86px; height: 86px">
-                                    <a href="/documents/absence-form">
-                                    <i class="material-icons">info_outline</i>
-                                    <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>결근사유서</sup></p>
-                                    </a>
-                                </div>
-                                <p class="card-category">결근일수</p>
-                                <h3 class="card-title">${loginDTO.countAbsenceDate}</h3>
-                                <small>일</small>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons">date_range</i> This Month
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-header card-header-info card-header-icon">
-                                <div class="card-icon"  style="width: 86px; height: 86px">
-                                    <a href="/documents/hollyDay-form">
-                                    <i class="fa fa-twitter"></i>
-                                    <p style="text-align: center; margin-top: 0; padding-top: 0"><sup>휴가신청</sup></p>
-                                    </a>
-                                </div>
-                                <p class="card-category">휴가일수</p>
-                                <h3 class="card-title">${loginDTO.restHoliday}/${loginDTO.totalHoliday}</h3>
-                                <small>일</small>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons">update</i> Today Updated
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-primary">
-                                <h4 class="card-title">이번달 신입사원</h4>
-                                <p class="card-category">입사를 환영합니다. 많이 도와주세요.</p>
-                            </div>
-                            <div class="card-body table-responsive">
-                                <table class="table table-hover">
-                                    <thead class="text-warning">
-                                    <th class="tableTh">사원명</th>
-                                    <th class="tableTh">부서</th>
-                                    <th class="tableTh">직급</th>
-                                    <th class="tableTh">입사일</th>
-                                    </thead>
-                                    <tbody>
-                                    <c:forEach items="${newList}" var="newList">
-                                    <tr>
-                                        <td>${newList.memberName}</td>
-                                        <td>${newList.memberDept}</td>
-                                        <td>${newList.memberPosition}</td>
-                                        <td><fmt:formatDate pattern="yyyy-MM-dd"
-                                                            value="${newList.memberJoinDate}"></fmt:formatDate></td>
-                                    </tr>
-                                    </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-tabs card-header-warning">
-                                <h4 class="card-title">이번달 휴가인원</h4>
-                                <p class="card-category">푹쉬고 새로운 마음가짐으로 일하세요.</p>
-                            </div>
-                            <div class="card-body table-responsive">
-                                <table class="table table-hover">
-                                    <thead class="text-warning">
-                                    <th class="tableTh">사원명</th>
-                                    <th class="tableTh">부서</th>
-                                    <th class="tableTh">직급</th>
-                                    <th class="tableTh">휴가기간</th>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Dakota Rice</td>
-                                        <td>$36,738</td>
-                                        <td>Niger</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Minerva Hooper</td>
-                                        <td>$23,789</td>
-                                        <td>Curaçao</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Sage Rodriguez</td>
-                                        <td>$56,142</td>
-                                        <td>Netherlands</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Philip Chaney</td>
-                                        <td>$38,735</td>
-                                        <td>Korea, South</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="float-left">
-                    <ul>
-                        <li>
-                            <a href="https://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://creative-tim.com/presentation">
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.creative-tim.com/license">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright float-right" id="date">
-                    , made with <i class="material-icons">favorite</i> by
-                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-                </div>
-            </div>
-        </footer>
-        <script>
-            const x = new Date().getFullYear();
-            let date = document.getElementById('date');
-            date.innerHTML = '&copy; ' + x + date.innerHTML;
-        </script>
+            </tr>
+            <tr>
+                <td style="width: 70%">테스트 단계입니다</td>
+                <td style="width: 30%; color: dimgray; text-align: right; padding-right: 5px">2020.06.06.</td>
+            </tr>
+            <tr>
+                <td style="width: 70%">어떻게 만들어야 잘만들까요?</td>
+                <td style="width: 30%; color: dimgray; text-align: right; padding-right: 5px">2020.06.06.</td>
+            </tr>
+            <tr>
+                <td style="width: 70%">공지사항란</td>
+                <td style="width: 30%; color: dimgray; text-align: right; padding-right: 5px">2020.06.06.</td>
+            </tr>
+        </table>
+    </div>
+    <div class="main body2">
+        <table class="table2">
+            <thead>
+                <tr>
+                    <th>사원명</th>
+                    <th>부서</th>
+                    <th>직급</th>
+                    <th>입사일자</th>
+                </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${newList}" var="newList">
+                <tr>
+                    <td>${newList.memberName}</td>
+                    <td>${newList.memberDept}</td>
+                    <td>${newList.memberPosition}</td>
+                    <td>${newList.memberJoinDate}</td>
+<%--                    <td><fmt:formatDate pattern="yyyy-MM-dd" value="${newList.memberJoinDate}"></fmt:formatDate></td>--%>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="subTitle left-2"><img src="../../../resources/img/triangle.png">이번달 전체 근태현황</div>
+    <div class="subTitle right-2"><img src="../../../resources/img/triangle.png">저번달 전체 근태현황</div>
+    <div class="main2 body1">
+        <table class="table3">
+            <tr>
+                <th>근무일</th>
+                <th>출근률</th>
+                <th>지각률</th>
+                <th>조퇴률</th>
+                <th>결근률</th>
+            </tr>
+            <tr>
+                <td>100%</td>
+                <td>95%</td>
+                <td>95%</td>
+                <td>5%</td>
+                <td>5%</td>
+            </tr>
+        </table>
+    </div>
+    <div class="main2 body2">
+        <table class="table3">
+            <tr>
+                <th>근무일</th>
+                <th>출근률</th>
+                <th>지각률</th>
+                <th>조퇴률</th>
+                <th>결근률</th>
+            </tr>
+            <tr>
+                <td>100%</td>
+                <td>95%</td>
+                <td>95%</td>
+                <td>5%</td>
+                <td>5%</td>
+            </tr>
+        </table>
+    </div>
+    <div class="subTitle left-3"><img src="../../../resources/img/triangle.png">이번달 내 근태현황</div>
+    <div class="subTitle right-3"><img src="../../../resources/img/triangle.png">저번달 내 근태현황</div>
+    <div class="main3 body1" >
+        <table class="table3">
+            <tr>
+                <th>근무일수</th>
+                <th>출근일수</th>
+                <th>지각일수</th>
+                <th>조퇴일수</th>
+                <th>결근일수</th>
+            </tr>
+            <tr>
+                <td>15/일</td>
+                <td>15/일</td>
+                <td>1/일</td>
+                <td>1/일</td>
+                <td>0/일</td>
+            </tr>
+        </table>
+    </div>
+    <div class="main3 body2">
+        <table class="table3">
+            <tr>
+                <th>근무일수</th>
+                <th>출근일수</th>
+                <th>지각일수</th>
+                <th>조퇴일수</th>
+                <th>결근일수</th>
+            </tr>
+            <tr>
+                <td>15/일</td>
+                <td>/일</td>
+                <td>1/일</td>
+                <td>/일</td>
+                <td>/일</td>
+            </tr>
+        </table>
+    </div>
+    <div class="subTitle left-4"><img src="../../../resources/img/triangle.png">출근 체크기</div>
+    <div class="subTitle right-4"><img src="../../../resources/img/triangle.png">퇴근 체크기</div>
+
+    <div class="main4 body1">
+        <button class="btn-check" onclick="location.href='/attendance/attendance?id=${sessionScope.id}'">
+            <img src="../../../resources/img/check-in.png" alt="">
+        </button>
+        <span style="position: absolute; left: 70px; line-height: 66px">아직 출근체크 전입니다. 출근 체크하세요~!!</span>
+    </div>
+    <div class="main4 body2">
+        <button class="btn-check" style="position: absolute;" onclick="location.href='/attendance/closing?id=${sessionScope.id}'">
+            <img src="../../../resources/img/check-out.png" alt="">
+        </button>
+        <span style="position: absolute; left: 70px; line-height: 66px">아직 퇴근체크할 시간이 아닙니다.</span>
     </div>
 </div>
-
-<!--   Core JS Files   -->
-<script src="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\js\core\jquery.min.js"></script>
-<script src="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\js\core\popper.min.js"></script>
-<script src="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\js\core\bootstrap-material-design.min.js"></script>
-<script src="https://unpkg.com/default-passive-events"></script>
-<script src="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\js\plugins\perfect-scrollbar.jquery.min.js"></script>
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-<!-- Chartist JS -->
-<script src="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\js\plugins/chartist.min.js"></script>
-<!--  Notifications Plugin    -->
-<script src="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\js\plugins/bootstrap-notify.js"></script>
-<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\material-dashboard-dark-edition-v2.1.0\assets\js\material-dashboard.js?v=2.1.0"></script>
-<!-- Material Dashboard DEMO methods, don't include it in your project! -->
-<script src="../../../resources/js/demo.js"></script>
-<script>
-    $(document).ready(function() {
-        $().ready(function() {
-            $sidebar = $('.sidebar');
-
-            $sidebar_img_container = $sidebar.find('.sidebar-background');
-
-            $full_page = $('.full-page');
-
-            $sidebar_responsive = $('body > .navbar-collapse');
-
-            window_width = $(window).width();
-
-                var new_image = $(this).find("img").attr('src');
-
-                if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                    $sidebar_img_container.fadeOut('fast', function() {
-                        $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                        $sidebar_img_container.fadeIn('fast');
-                    });
-                }
-
-                if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-                    $full_page_background.fadeOut('fast', function() {
-                        $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-                        $full_page_background.fadeIn('fast');
-                    });
-                }
-
-                if ($('.switch-sidebar-image input:checked').length == 0) {
-                    var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-                    var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-                    $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-                    $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-                }
-
-                if ($sidebar_responsive.length != 0) {
-                    $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-                }
-            });
-
-            $('.switch-sidebar-image input').change(function() {
-                $full_page_background = $('.full-page-background');
-
-                $input = $(this);
-
-                if ($input.is(':checked')) {
-                    if ($sidebar_img_container.length != 0) {
-                        $sidebar_img_container.fadeIn('fast');
-                        $sidebar.attr('data-image', '#');
-                    }
-
-                    if ($full_page_background.length != 0) {
-                        $full_page_background.fadeIn('fast');
-                        $full_page.attr('data-image', '#');
-                    }
-
-                    background_image = true;
-                } else {
-                    if ($sidebar_img_container.length != 0) {
-                        $sidebar.removeAttr('data-image');
-                        $sidebar_img_container.fadeOut('fast');
-                    }
-
-                    if ($full_page_background.length != 0) {
-                        $full_page.removeAttr('data-image', '#');
-                        $full_page_background.fadeOut('fast');
-                    }
-
-                    background_image = false;
-                }
-            });
-
-            $('.switch-sidebar-mini input').change(function() {
-                $body = $('body');
-
-                $input = $(this);
-
-                if (md.misc.sidebar_mini_active == true) {
-                    $('body').removeClass('sidebar-mini');
-                    md.misc.sidebar_mini_active = false;
-
-                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
-                } else {
-
-                    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
-                    setTimeout(function() {
-                        $('body').addClass('sidebar-mini');
-
-                        md.misc.sidebar_mini_active = true;
-                    }, 300);
-                }
-
-                // we simulate the window Resize so the charts will get updated in realtime.
-                var simulateWindowResize = setInterval(function() {
-                    window.dispatchEvent(new Event('resize'));
-                }, 180);
-
-                // we stop the simulation of Window Resize after the animations are completed
-                setTimeout(function() {
-                    clearInterval(simulateWindowResize);
-                }, 1000);
-        });
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        // Javascript method's body can be found in assets/js/demos.js
-        md.initDashboardPageCharts();
-
-    });
-</script>
+<%--<div class="sub-container">--%>
+<%--    <img src="../../../resources/img/adminz-banner.png" class="myBanner" alt="">--%>
+<%--</div>--%>
+<jsp:include page="../layout/footer.jsp" flush="false"></jsp:include>
 </body>
+<script>
+    function getRandRange(min,max){
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getRandWeight(listItem){
+        let pickVal = Number.MAX_VALUE;
+        let pickItem = null;
+        for(let item in listItem){
+            if(listItem.hasOwnProperty(item)){
+                let tmpVal = -Math.log(Math.random()) / listItem[item];
+                if(tmpVal < pickVal){
+                    pickVal = tmpVal;
+                    pickItem = item;
+                }
+            }
+        }
+        return pickItem;
+    }
+
+    $(document).ready(function(){
+        let listItem = [];
+        listItem["김"] = 30;
+        listItem["이"] = 20;
+        listItem["박"] = 11;
+        listItem["최"] = 6;
+        listItem["정"] = 5.6;
+        listItem["조"] = 3.5;
+        listItem["강"] = 2.75
+        listItem["윤"] = 2.65
+        listItem["장"] = 2.6;
+        listItem["임"] = 2.5;
+        listItem["한"] = 1.95;
+        listItem["전"] = 1.75;
+        listItem["권"] = 1.55;
+        listItem["신"] = 1.5;
+        listItem["송"] = 1.25;
+        listItem["오"] = 1.15;
+        listItem["서"] = 1;
+        listItem["황"] = 0.95;
+        listItem["고"] = 0.85;
+        listItem["양"] = 0.75;
+        listItem["문"] = 0.7;
+        let boysNames = new Array(100);
+        let girlsNames = new Array(100);
+        let memberIdArr = new Array();
+        boysNames = ["민준","서준","도윤","예준","시우","하준","주원","지호","지후","준우","준서","건우","도현","현우","지훈","우진","선우","서진","유준","연우","민재","현준","은우","정우","시윤","승우","승현","준혁","지환","윤우","승민","유찬","지우","이준","민성","준영","시후","진우","수호","지원","수현","재윤","시현","동현","태윤","이안","민규","한결","재원","민우","재민","은찬","윤호","시원","민찬","지안","시온","성민","준호","승준","성현","현서","재현","하율","지한","우빈","태민","지성","예성","민호","태현","지율","서우","민혁","은호","성준","규민","정민","준","지민","윤성","율","윤재","우주","하람","하진","민석","준수","은성","태양","예찬","준희","도훈","하민","준성","건","지완","현수","승원","강민"];
+        girlsNames = ["서연","서윤","지우","서현","하은","하윤","민서","지유","윤서","지민","채원","수아","지아","지윤","은서","다은","예은","수빈","지안","소율","예린","예원","하린","지원","소윤","서아","시은","유나","유진","채은","윤아","가은","서영","민지","예진","예나","수민","수연","연우","시아","아린","예서","주아","하율","시연","연서","다인","서우","유주","다연","아인","현서","아윤","서은","채윤","하연","서율","서진","유빈","나윤","지율","나은","수현","예지","다현","서하","소은","나연","지은","민주","사랑","시현","예빈","윤지","지현","소연","채아","혜원","지수","은채","주하","승아","다윤","소민","서희","나현","채린","민아","하영","세아","세은","도연","규리","아영","다온","가윤","지연","예림","태희","민채"];
+        memberIdArr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        // for(let i=0; i<100; i++){
+        //     let pickItem = getRandWeight(listItem);
+        //     console.log(pickItem+boysNames[getRandRange(0,99)]);
+        //     console.log(pickItem+girlsNames[getRandRange(0,99)]);
+        // }
+        let memberId="";
+        let year1="19";
+        let year2=getRandRange(70,99);
+        let month=getRandRange(1,12);
+        if (month<10){
+            month="0"+month;
+        }
+        let day;
+        if (month==1|3|5|7|8|10|12){
+            day=getRandRange(1,31);
+        } else if(month==4|6|9|11){
+            day=getRandRange(1,30);
+        } else {
+            day=getRandRange(1,28);
+        }
+        let memberIdNum = year1+year2+month+day;
+        console.log(memberIdNum);
+        for(let i=0; i<6; i++){
+            memberId+=memberIdArr[getRandRange(0,memberIdArr.length)];
+        }
+        for(let i=0; i<4; i++){
+            memberId+=getRandRange(0,9);
+        }
+        console.log(memberId);
+    });
+</script>
 </html>
