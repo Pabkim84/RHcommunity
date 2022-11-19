@@ -1,7 +1,6 @@
 package com.its.rhCommunity.repository;
 
 import com.its.rhCommunity.dto.AnnualHolidayDTO;
-import com.its.rhCommunity.dto.HolidayDateDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

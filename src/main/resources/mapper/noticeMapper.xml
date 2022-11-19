@@ -23,4 +23,7 @@
     <update id="update" parameterType="notice">
         UPDATE notice_table set noticeTitle=#{noticeTitle}, noticeContents=#{noticeContents}, noticeFileName=#{noticeFileName} WHERE id = #{id}
     </update>
+    <delete id="delete" parameterType="Long">
+        DELETE FROM notice_table WHERE id=#{id}
+    </delete>
 </mapper>

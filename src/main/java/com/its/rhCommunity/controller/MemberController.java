@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.*;
 
 @RequestMapping("/member")
@@ -74,7 +73,7 @@ public class MemberController {
     public String findById(@RequestParam Long id, Model model){
         MemberDTO memberDTO = memberService.findById(id);
         model.addAttribute("memberDTO", memberDTO);
-        return "member/test";
+        return "member/detail";
     }
     @GetMapping("/delete")
     public String delete(@RequestParam Long id){
@@ -91,7 +90,7 @@ public class MemberController {
     public String pwCheck1(@RequestParam Long id, Model model){
         MemberDTO memberDTO = memberService.findById(id);
         model.addAttribute("memberDTO", memberDTO);
-    return "member/testForm";
+    return "member/updateForm";
     }
 //    @GetMapping("/update-form")
 //    public String updateForm(@RequestParam (value = "id") Long id, Model model){

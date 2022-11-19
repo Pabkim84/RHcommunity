@@ -39,4 +39,8 @@ public class NoticeRepository {
     public void updateHits(Long id) {
         sql.update("Notice.updateHits", id);
     }
+
+    public void delete(Long id) {
+        sql.delete("Notice.delete", id);
+    }
 }

@@ -89,4 +89,8 @@ public class NoticeService {
     public void updateHits(Long id) {
         noticeRepository.updateHits(id);
     }
+
+    public void delete(Long id) {
+        noticeRepository.delete(id);
+    }
 }
