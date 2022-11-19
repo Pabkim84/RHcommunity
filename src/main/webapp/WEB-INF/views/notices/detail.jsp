@@ -180,7 +180,7 @@
                     </div>
                     <c:if test="${sessionScope.id==notice.noticeWriterId}">
                         <input type="button" class="btn saveBtn" id="updateBtn" style="margin-left: 6%" value="수정하기">
-                        <input type="button" class="btn saveBtn" id="deleteBtn" value="삭제하기">
+                        <input type="button" class="btn saveBtn" id="deleteBtn" onclick="deleteNotice()" value="삭제하기">
                     </c:if>
                 </td>
             </tr>
@@ -206,5 +206,10 @@
             fadeDuration: 250
         });
     });
+    const deleteNotice = () => {
+        if(confirm("정말 이 게시글을 삭제하시겠습니까?")){
+            location.href='/notice/delete?id=${notice.id}';
+        }
+    }
 </script>
 </html>

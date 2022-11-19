@@ -65,4 +65,9 @@ public class NoticeController {
         noticeService.update(noticeDTO);
         return "redirect:/notice/findById?id="+noticeDTO.getId();
     }
+    @GetMapping ("/delete")
+    public String delete(@RequestParam Long id) {
+        noticeService.delete(id);
+        return "redirect:/notice/paging";
+    }
 }
