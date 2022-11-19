@@ -5,8 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
+
 
 @Data
 @NoArgsConstructor
@@ -14,13 +15,12 @@ import java.util.Date;
 public class AttendanceDTO {
     private Long id;
     private Long numId;
-    private String memberName;
-    private String memberDept;
-    private String memberPosition;
-    private Timestamp memberJoinDate;
-    private String attendanceDate;
-    private String closingDate;
+    private Integer workedTime;
+    private Integer overTime;
+    private LocalDate today;
+    private String attendanceTime;
+    private String closingTime;
     private String absenceDate;
-    private String lateDate;
-    private String earlyDate;
+    private Integer lateTime;
+    private Integer earlyTime;
 }

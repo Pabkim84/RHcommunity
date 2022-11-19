@@ -70,8 +70,7 @@
                 <th scope="col">직급</th>
                 <td>${memberDTO.memberPosition}</td>
                 <th scope="col">입사일</th>
-                <td><fmt:formatDate pattern="yyyy-MM-dd"
-                                    value="${memberDTO.memberJoinDate}"></fmt:formatDate></td>
+                <td>${memberDTO.memberJoinDate}"></td>
             </tr>
             <tr>
                 <th scope="col">주민등록번호</th>

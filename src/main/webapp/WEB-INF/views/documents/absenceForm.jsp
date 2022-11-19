@@ -9,6 +9,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <title>결근신청 및 사유서</title>
     <style>
         .container {
@@ -67,6 +69,12 @@
             font-weight: 500;
             text-align: left;
         }
+        .btnDiv {
+            position: absolute;
+            top: 95%;
+            width: 99%;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -114,7 +122,7 @@
             <tr>
                 <th colspan="4">
                     <p class="subTitle" style="text-align: center; font-size: 16px">결근일자
-                        <input type="date"> 부터 <input type="date"> 까지
+                        <input type="date" id="startDate"> 부터 <input type="date" id="endDate"> 까지
                     </p>
                 </th>
             </tr>
@@ -127,15 +135,15 @@
     <div class="text-container">
         <p class="text">위와 같은 사유로 결근합니다.</p>
         <p class="text" id="current_date"></p>
-        <span>RHcompany ${memberDTO.memberDept} ${memberDTO.memberPosition}</span> <span class="text-name">${memberDTO.memberName}</span>   <span class="text-auth">(인)</span>
+        <span>결근 신청인:&nbsp;&nbsp;</span> <span class="text-name">${memberDTO.memberName}</span>   <span class="text-auth">(인)</span>
     </div>
     <div class="table-container" style="margin-top: 100px">
         <table class="table-custom" style="border: 0">
             <tr style="border: 0">
                 <th style="border: 0"></th>
                 <th style="border: 0"></th>
-                <th>부서장</th>
-                <th>인사팀장</th>
+                <th style="width: 100px">부서장</th>
+                <th style="width: 100px">인사팀장</th>
             </tr>
             <tr style="border: 0; text-align: center">
                 <td style="border: 0"></td>
@@ -145,6 +153,7 @@
             </tr>
         </table>
     </div>
+    <div class="btnDiv"><button class="btn"  id="print">출력하기</button></div>
 </div>
 </body>
 <script>
@@ -153,7 +162,19 @@
     month = date.getMonth() + 1;
     day = date.getDate();
     document.getElementById("current_date").innerHTML = year + "년 " + month + "월 " + day + "일" ;
-    document.getElementById("current_date2").innerHTML = year + "년 " + month + "월 " + day + "일" ;
+
+    $('#print').click(function () {
+        const startDate = document.getElementById("startDate").value;
+        const endDate = document.getElementById("endDate").value;
+        if(!startDate||!endDate){
+            alert("결근일자를 입력해주세요.");
+        } else {
+            document.querySelector('#print').style.display="none";
+            window.print();
+            document.querySelector('#print').style.display="inline";
+        }
+
+    });
 </script>
 </html>
 

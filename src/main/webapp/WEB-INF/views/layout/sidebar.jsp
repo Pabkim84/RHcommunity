@@ -1,34 +1,22 @@
-<!--
-=========================================================
-* Material Dashboard Dark Edition - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-dark
-* Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
-* Coded by www.creative-tim.com
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta charset="utf-8" />
+<%--    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />--%>
+<%--    <meta charset="utf-8" />--%>
     <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="E:\developement_pk\source\spring_framework\RHcommunity\src\main\webapp\resources\css\material-dashboard.css"/>
+
     <title></title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+<%--    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />--%>
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-    <!-- CSS Files -->
-    <link href="../../../resources/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link href="../../../resources/css/demo.css" rel="stylesheet" />
+<%--    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />--%>
+<%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">--%>
+<%--    <!-- CSS Files -->--%>
+<%--    <!-- CSS Just for demo purpose, don't include it in your project -->--%>
+<%--    <link href="../../../resources/css/demo.css" rel="stylesheet" />--%>
+
     <style>
         .custom-sidebar{
             width: 260px;
@@ -36,10 +24,7 @@
             vertical-align: top;
 
         }
-        HTML CSSResult Skip Results Iframe
-        EDIT ON
 
-        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
         li.nav-item{
             margin: 0 auto 0 auto;
             font-size: small;
@@ -50,7 +35,13 @@
             height: 260px;
             vertical-align: top;
         }
-
+        .sidebar .logo{
+            padding: 0;
+            margin-bottom: 30px;
+        }
+        .dark-edition .sidebar .logo .simple-text {
+            padding: 0;
+        }
         .dropdown{
             position : relative;
             display : inline-block;
@@ -64,7 +55,7 @@
         }
         .dropbtn{
             border: 0;
-            background-color: rgb(31,40,61);
+            background-color: transparent;
             font-weight: 400;
             color : rgb(138,143,157);
             padding : 15px 46px 6px 13px;
@@ -108,7 +99,6 @@
         }
     </style>
 </head>
-
 <body class="dark-edition">
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
 <div class="custom-sidebar">
@@ -116,6 +106,7 @@
 
         <div class="logo">
             <a href="/member/main" class="simple-text logo-normal">
+                <img src="../../../resources/material-dashboard-dark-edition-v2.1.0/assets/img/AdminzLogo.jpg" width="260px" alt="logo">
             </a>
         </div>
         <div class="sidebar-wrapper">
@@ -127,7 +118,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="/member/memberList">
+                    <a class="nav-link" href="/member/paging">
                         <sub><i class="bi bi-person-lines-fill" style="font-size: 20px"></i></sub>
                         <p class="fontCustom" style="vertical-align: center">사원목록</p>
                     </a>
@@ -145,7 +136,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="/annualHoliday/save">
+                    <a class="nav-link" href="/annualHoliday/save-form">
                        <sub><i class="bi bi-calendar-week" style="font-size: 20px"></i></sub>
                         <p>휴가관리</p>
                     </a>
@@ -181,10 +172,10 @@
 </div>
 <!--   Core JS Files   -->
 
-<script src="https://unpkg.com/default-passive-events"></script>
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!--  Google Maps Plugin    -->
+<%--<script src="https://unpkg.com/default-passive-events"></script>--%>
+<%--<!-- Place this tag in your head or just before your close body tag. -->--%>
+<%--<script async defer src="https://buttons.github.io/buttons.js"></script>--%>
+<%--<!--  Google Maps Plugin    -->--%>
 </body>
 
 </html>

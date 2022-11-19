@@ -68,7 +68,8 @@
 </main>
 </body>
 <script>
-    const pwCheck = (pw1) => {
+    const pwCheck = () => {
+        const pw1 = ${memberDTO.memberPassword};
         const pw2 = document.getElementById("loginPassword").value;
         if(pw1==pw2){
             alert("비밀번호가 일치합니다.");

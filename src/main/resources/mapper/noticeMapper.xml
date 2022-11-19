@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Notice">
+    <select id="findAll" parameterType="java.util.HashMap" resultType="notice">
+        SELECT * FROM notice_table ORDER BY id DESC limit #{start}, #{limit}
+    </select>
+    <insert id="save" parameterType="notice">
+        INSERT INTO notice_table (noticeWriterId, noticeWriter, noticeTitle, noticeContents, noticeCreatedDateTime, noticeHits, noticeFileName)
+        VALUES (#{noticeWriterId}, #{noticeWriter}, #{noticeTitle}, #{noticeContents}, now(), #{noticeHits}, #{noticeFileName})
+    </insert>
+    <select id="count" resultType="int">
+        SELECT COUNT(id) FROM notice_table
+    </select>
+    <select id="findById" parameterType="Long" resultType="notice">
+        SELECT * FROM notice_table WHERE id = #{id}
+    </select>
+    <update id="updateHits" parameterType="Long">
+        UPDATE notice_table set noticeHits=noticeHits+1 WHERE id = #{id}
+    </update>
+    <update id="update" parameterType="notice">
+        UPDATE notice_table set noticeTitle=#{noticeTitle}, noticeContents=#{noticeContents}, noticeFileName=#{noticeFileName} WHERE id = #{id}
+    </update>
+</mapper>
