@@ -11,5 +11,6 @@
         <typeAlias type="com.its.rhCommunity.dto.NoticeDTO" alias="notice" />
         <typeAlias type="com.its.rhCommunity.dto.SalaryDTO" alias="salary" />
         <typeAlias type="com.its.rhCommunity.dto.AttendanceAdminDTO" alias="attAdminDTO" />
+        <typeAlias type="com.its.rhCommunity.dto.HolidayAdminDTO" alias="holidayAdmin" />
     </typeAliases>
 </configuration>

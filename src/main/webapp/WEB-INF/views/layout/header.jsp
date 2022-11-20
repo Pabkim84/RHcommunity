@@ -197,7 +197,7 @@
         <img src="../../../resources/img/attendance.png" class="img-ico" alt="근태관리">
       </div>
     </button>
-    <button type="button" class="btn-menu" onclick="location.href='/annualHoliday/save-form'">
+    <button type="button" class="btn-menu" onclick=holidayOfMonth()>
       <div class="ico-text">
         <img src="../../../resources/img/calender.png" class="img-ico" alt="휴가관리">
       </div>
@@ -389,5 +389,11 @@
 <%--  </div>--%>
 <%--</div>--%>
 </body>
-
+<script>
+  const holidayOfMonth = () => {
+    const date = new Date();
+    const month = date.getMonth()+1;
+    location.href='/adminMode/annualHolidayList?month='+month;
+  }
+</script>
 </html>
