@@ -1,8 +1,7 @@
 package com.its.rhCommunity.controller;
 
-import com.its.rhCommunity.dto.AttendanceAdminDTO;
-import com.its.rhCommunity.dto.AttendanceDTO;
-import com.its.rhCommunity.dto.MemberDTO;
+import com.its.rhCommunity.dto.*;
+import com.its.rhCommunity.service.AnnualHolidayService;
 import com.its.rhCommunity.service.AttendanceService;
 import com.its.rhCommunity.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,8 @@ public class AdminModeController {
     MemberService memberService;
     @Autowired
     AttendanceService attendanceService;
-
+    @Autowired
+    AnnualHolidayService annualHolidayService;
     @GetMapping("/AttendanceOfMonth")
     public String findAllByMonth(Model model){
         List<AttendanceAdminDTO> attendanceAdminList = attendanceService.findAllByMonth();
@@ -34,18 +35,13 @@ public class AdminModeController {
         model.addAttribute("attAdminList", attendanceAdminList);
         return "attendance/detailOfMonth";
     }
+    @GetMapping("annualHolidayList")
+    public String annualHolidayList(@RequestParam int month,  Model model) {
+        List<HolidayAdminDTO> annualHolidayDTO = annualHolidayService.findAllByMonth(month);
+        model.addAttribute("holidayList", annualHolidayDTO);
+        return "annualHoliday/annualHolidayList";
+    }
 }
-
-// 평균 근무일수
-// 평균 결근일수(통계)
-// 평균 근무시간(통계)
-// 초과 근무시간(통계)
-// 평균 지각률(통계)
-// 평균 지각시간(통계)
-// 평균 조퇴률(통계)
-// 평균 조퇴시간(통계)
-
-
 
 
 

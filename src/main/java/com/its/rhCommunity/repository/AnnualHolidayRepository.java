@@ -1,10 +1,12 @@
 package com.its.rhCommunity.repository;
 
 import com.its.rhCommunity.dto.AnnualHolidayDTO;
+import com.its.rhCommunity.dto.HolidayAdminDTO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -28,6 +30,11 @@ public class AnnualHolidayRepository {
 
     public AnnualHolidayDTO findLastDateByNumId(Long id) {
         return sql.selectOne("Holiday.findLastDateByNumId", id);
+    }
+
+    public List<HolidayAdminDTO> findAllByMonth(int month) {
+
+        return sql.selectList("Holiday.findAllByMonth", month);
     }
 
 //    public void update(AnnualHolidayDTO annalHolidayDTO) {

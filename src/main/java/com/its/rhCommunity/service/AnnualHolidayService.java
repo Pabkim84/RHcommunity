@@ -1,5 +1,6 @@
 package com.its.rhCommunity.service;
 import com.its.rhCommunity.dto.AnnualHolidayDTO;
+import com.its.rhCommunity.dto.HolidayAdminDTO;
 import com.its.rhCommunity.dto.MemberDTO;
 import com.its.rhCommunity.repository.AnnualHolidayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,7 +72,8 @@ public class AnnualHolidayService {
             System.out.println("holidayService========" + (findDTO.getTotalVacations() - findDTO.getUsedVacations()));
         }
         return findDTO;
-
-
+    }
+    public List<HolidayAdminDTO> findAllByMonth(int month) {
+        return annualHolidayRepository.findAllByMonth(month);
     }
 }
