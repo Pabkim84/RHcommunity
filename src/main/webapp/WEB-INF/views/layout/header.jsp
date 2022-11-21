@@ -392,8 +392,9 @@
 <script>
   const holidayOfMonth = () => {
     const date = new Date();
+    const year = date.getFullYear();
     const month = date.getMonth()+1;
-    location.href='/adminMode/annualHolidayList?month='+month;
+    location.href='/adminMode/annualHolidayList?year='+year+'&month='+month;
   }
 </script>
 </html>
