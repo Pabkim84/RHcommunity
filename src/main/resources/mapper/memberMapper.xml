@@ -24,7 +24,7 @@
         update members_table set memberPassword=#{memberPassword}, memberName=#{memberName}, groupNo=#{groupNo}, memberGroup=#{memberGroup}, deptNo=#{deptNo}, memberDept=#{memberDept}, memberTeam=#{memberTeam}, memberDuty=#{memberDuty}, memberPosition=#{memberPosition}, memberIdNum=#{memberIdNum}, memberBirthday=#{memberBirthDay}, gender=#{gender}, health=#{health}, maritalStatus=#{maritalStatus}, impairment=#{impairment}, levImpairment=#{levImpairment}, memberAddress=#{memberAddress}, memberEmail=#{memberEmail}, memberMobile=#{memberMobile},memberProfileName=#{memberProfileName}, salary=#{salary}, stockOption=#{stockOption}, contractOption=#{contractOption}, hobby=#{hobby}, specialty=#{specialty}, religion=#{religion}, education1=#{education1}, education2=#{education2}, career1=#{career1}, career2=#{career2}, career3=#{career3}, license=#{license} where id=#{id}
     </update>
     <select id="findNew" resultType="member">
-        select * from members_table where date_format(memberJoinDate,'%Y-%m')=date_format(now(),'%Y-%m')
+        select * from members_table where date_format(memberJoinDate,'%Y-%m')=date_format(now(),'%Y-%m') order by id desc limit 5
     </select>
     <select id="pagingList" parameterType="java.util.HashMap" resultType="member">
         select * from members_table order by id desc limit #{start}, #{limit}

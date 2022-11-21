@@ -93,4 +93,8 @@ public class NoticeService {
     public void delete(Long id) {
         noticeRepository.delete(id);
     }
+
+    public List<NoticeDTO> findResentNotice() {
+        return noticeRepository.findResentNotice();
+    }
 }

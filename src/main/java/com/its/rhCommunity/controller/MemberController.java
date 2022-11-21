@@ -1,8 +1,10 @@
 package com.its.rhCommunity.controller;
 
 import com.its.rhCommunity.dto.MemberDTO;
+import com.its.rhCommunity.dto.NoticeDTO;
 import com.its.rhCommunity.dto.PageDTO;
 import com.its.rhCommunity.service.MemberService;
+import com.its.rhCommunity.service.NoticeService;
 import com.its.rhCommunity.service.SalaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,13 +22,18 @@ public class MemberController {
     private MemberService memberService;
     @Autowired
     private SalaryService salaryService;
+    @Autowired
+    private NoticeService noticeService;
     @GetMapping("/main")
     public String main(Model model, HttpSession session){
         Long id = (Long) session.getAttribute("id");
         MemberDTO memberDTO = memberService.findById(id);
         List<MemberDTO> newMemberList = memberService.findNew();
+        List<NoticeDTO> noticeDTOList = noticeService.findResentNotice();
+        System.out.println("noticeDTOList = " + noticeDTOList);
         model.addAttribute("newList", newMemberList);
         model.addAttribute("loginDTO", memberDTO);
+        model.addAttribute("noticeList", noticeDTOList);
         return "member/main";
     }
     @GetMapping("/signUp")

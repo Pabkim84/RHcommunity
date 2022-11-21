@@ -123,12 +123,18 @@
             list-style: none;
 
         }
+        .signupMember {
+            position: absolute;
+            top: 33px;
+            left: 89%;
+        }
     </style>
 </head>
 <body>
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
 <div class="main-container">
     <div class="subTitle"><img src="../../../resources/img/triangle.png">전체 사원목록</div>
+    <div class="signupMember"><button type="button" class="btn" id="signupBtn" onclick="signupForm()">사원등록</button></div>
     <table class="table1">
             <thead>
                 <tr>
@@ -140,7 +146,6 @@
                     <th scope="col" style="width: 11%">입사일</th>
                     <th scope="col" style="width: 12%">이메일</th>
                     <th scope="col" style="width: 12%">연락처</th>
-<%--                    <th scope="col" style="width: 7%">상세조회</th>--%>
                     <th scope="col" style="width: 7%">사원삭제</th>
                 </tr>
             </thead>
@@ -155,7 +160,6 @@
                     <td>${memberList.memberJoinDate}</td>
                     <td>${memberList.memberEmail}</td>
                     <td>${memberList.memberMobile}</td>
-<%--                    <td><a href="/member/detail?id=${memberList.id}">사원조회</a></td>--%>
                     <td><a href="#" id="delete" onclick="deleteMember(${memberList.id})">사원삭제</a></td>
                 </tr>
                 </c:forEach>
@@ -171,7 +175,6 @@
                     <td></td>
                     <td></td>
                     <td></td>
-<%--                    <td></td>--%>
                 </tr>
                 </c:forEach>
             </c:if>
@@ -240,6 +243,8 @@
             alert("사원삭제를 취소합니다.");
         }
     }
-
+ const signupForm = () => {
+   location.href="/member/signUp";
+ }
 </script>
 </html>

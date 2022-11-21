@@ -26,4 +26,7 @@
     <delete id="delete" parameterType="Long">
         DELETE FROM notice_table WHERE id=#{id}
     </delete>
+    <select id="findResentNotice" resultType="notice">
+        SELECT * FROM notice_table ORDER BY id DESC Limit 5;
+    </select>
 </mapper>

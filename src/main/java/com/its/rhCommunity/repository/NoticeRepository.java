@@ -43,4 +43,8 @@ public class NoticeRepository {
     public void delete(Long id) {
         sql.delete("Notice.delete", id);
     }
+
+    public List<NoticeDTO> findResentNotice() {
+        return sql.selectList("Notice.findResentNotice");
+    }
 }
