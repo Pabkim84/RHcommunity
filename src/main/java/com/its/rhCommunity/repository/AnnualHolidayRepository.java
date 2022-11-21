@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 
 @Repository
@@ -32,9 +33,8 @@ public class AnnualHolidayRepository {
         return sql.selectOne("Holiday.findLastDateByNumId", id);
     }
 
-    public List<HolidayAdminDTO> findAllByMonth(int month) {
-
-        return sql.selectList("Holiday.findAllByMonth", month);
+    public List<HolidayAdminDTO> findAllByMonth(String yearMonth) {
+        return sql.selectList("Holiday.findAllByMonth", yearMonth);
     }
 
 //    public void update(AnnualHolidayDTO annalHolidayDTO) {

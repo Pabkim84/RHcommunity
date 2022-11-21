@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +37,26 @@ public class AdminModeController {
         return "attendance/detailOfMonth";
     }
     @GetMapping("annualHolidayList")
-    public String annualHolidayList(@RequestParam int month,  Model model) {
-        List<HolidayAdminDTO> annualHolidayDTO = annualHolidayService.findAllByMonth(month);
-        model.addAttribute("holidayList", annualHolidayDTO);
+    public String annualHolidayList(@RequestParam int month,
+                                    @RequestParam int year,  Model model) {
+        String yearMonth = year+"-"+month;
+        List<HolidayAdminDTO> annualHolidayDTOList = annualHolidayService.findAllByMonth(yearMonth);
+        System.out.println("annualHolidayDTO = " + annualHolidayDTOList);
+        if(annualHolidayDTOList.size()==0){
+            HolidayAdminDTO holidayAdminDTO = new HolidayAdminDTO();
+            holidayAdminDTO.setNumId(0l);
+            holidayAdminDTO.setMemberName("N/A");
+            holidayAdminDTO.setMemberDept("N/A");
+            holidayAdminDTO.setMemberPosition("N/A");
+            holidayAdminDTO.setHolidayDate("N/A");
+            holidayAdminDTO.setTotalVacations(0);
+            holidayAdminDTO.setUsedVacations(0);
+            holidayAdminDTO.setRestVacations(0);
+            holidayAdminDTO.setMemberEmail("N/A");
+            holidayAdminDTO.setMemberMobile("N/A");
+            annualHolidayDTOList.add(holidayAdminDTO);
+        }
+        model.addAttribute("holidayList", annualHolidayDTOList);
         return "annualHoliday/annualHolidayList";
     }
 }

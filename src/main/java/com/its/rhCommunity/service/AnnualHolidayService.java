@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,7 +58,7 @@ public class AnnualHolidayService {
 
         System.out.println("holidayService========id = "+id);
         findDTO = annualHolidayRepository.findLastDateByNumId(id);
-        System.out.println("holidayService========holidayDTO = " + findDTO);
+        System.out.println("holidayService========findDTO = " + findDTO);
         System.out.println("holidayService========"+annualHolidayRepository.countDays(id));
         int countDays = annualHolidayRepository.countDays(id);
         if(findDTO==null) {
@@ -73,7 +74,7 @@ public class AnnualHolidayService {
         }
         return findDTO;
     }
-    public List<HolidayAdminDTO> findAllByMonth(int month) {
-        return annualHolidayRepository.findAllByMonth(month);
+    public List<HolidayAdminDTO> findAllByMonth(String yearMonth) {
+        return annualHolidayRepository.findAllByMonth(yearMonth);
     }
 }

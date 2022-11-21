@@ -87,14 +87,14 @@
     .searchDiv {
       position: relative;
       top: 37px;
-      left: 79%;
-      width: 210px;
+      left: 75%;
+      width: 250px;
       height: 25px;
     }
     input[type=search] {
       position: absolute;
-      left: 40%;
-      width: 39%;
+      left: 50%;
+      width: 30%;
       height: 28px;
       margin: 0;
       padding: 0;
@@ -103,7 +103,7 @@
       text-indent: 5px;
 
     }
-    #searchBtn {
+    .btn {
       width: 20%;
       height: 28px;
       position: absolute;
@@ -125,9 +125,10 @@
 <jsp:include page="../layout/header.jsp" flush="false"></jsp:include>
 <div class="main-container">
   <div class="searchDiv" id="searchDiv">
-      <input type="search" id="year" style="left: 0" placeholder="  검색년도" maxlength="4">
-      <input type="search" id="month" placeholder="  검색월" maxlength="2">
-      <input type="button" id="searchBtn" value="검색">
+      <input type="button" class="btn" style="left: 0%;" id="listBtn" value="목록" onclick="holidayOfMonth()">
+      <input type="search" id="year" style="left: 20%" placeholder="  연도" maxlength="4">
+      <input type="search" id="month" placeholder="  월" maxlength="2">
+      <input type="button" class="btn" id="searchBtn" value="검색">
   </div>
 <div class="subTitle"><img src="../../../resources/img/triangle.png">이번달 휴가관리</div>
   <div class="subContainer">
@@ -147,20 +148,20 @@
       </tr>
       </thead>
       <tbody>
-      <c:forEach items="${holidayList}" var="holidayDTO" varStatus="i">
-      <tr>
-        <td><input type="text" id=numId${i.count}" value="${holidayDTO.numId}" readonly></td>
-        <td><input type="text" id="memberName${i.count}" value="${holidayDTO.memberName}" readonly></td>
-        <td><input type="text" id="memberDept${i.count}" value="${holidayDTO.memberDept}" readonly></td>
-        <td><input type="text" id="memberPosition${i.count}" value="${holidayDTO.memberPosition}" readonly></td>
-        <td><input type="text" id="holidayDate${i.count}" value="${holidayDTO.holidayDate}" readonly></td>
-        <td><input type="text" id="totalVacations${i.count}" value="${holidayDTO.totalVacations}" readonly></td>
-        <td><input type="text" id="usedVacations${i.count}" value="${holidayDTO.usedVacations}" readonly></td>
-        <td><input type="text" id="restVacations${i.count}" value="${holidayDTO.restVacations}" readonly></td>
-        <td><input type="text" id="memberEmail${i.count}" value="${holidayDTO.memberEmail}" readonly></td>
-        <td><input type="text" id="memberMobile${i.count}" value="${holidayDTO.memberMobile}" readonly></td>
-      </tr>
-      </c:forEach>
+          <c:forEach items="${holidayList}" var="holidayDTO" varStatus="i">
+          <tr>
+            <td><input type="text" id=numId${i.count}" value="${holidayDTO.numId}" readonly></td>
+            <td><input type="text" id="memberName${i.count}" value="${holidayDTO.memberName}" readonly></td>
+            <td><input type="text" id="memberDept${i.count}" value="${holidayDTO.memberDept}" readonly></td>
+            <td><input type="text" id="memberPosition${i.count}" value="${holidayDTO.memberPosition}" readonly></td>
+            <td><input type="text" id="holidayDate${i.count}" value="${holidayDTO.holidayDate}" readonly></td>
+            <td><input type="text" id="totalVacations${i.count}" value="${holidayDTO.totalVacations}" readonly></td>
+            <td><input type="text" id="usedVacations${i.count}" value="${holidayDTO.usedVacations}" readonly></td>
+            <td><input type="text" id="restVacations${i.count}" value="${holidayDTO.restVacations}" readonly></td>
+            <td><input type="text" id="memberEmail${i.count}" value="${holidayDTO.memberEmail}" readonly></td>
+            <td><input type="text" id="memberMobile${i.count}" value="${holidayDTO.memberMobile}" readonly></td>
+          </tr>
+        </c:forEach>
       </tbody>
     </table>
   </div>
@@ -168,4 +169,30 @@
 <jsp:include page="../layout/footer.jsp" flush="false"></jsp:include>
 
 </body>
+<script>
+  $('#searchBtn').click(function (){
+    searchByDate();
+  });
+  $('#month').keypress(function (e){
+    if(e.keyCode==13){
+      searchByDate();
+    }
+  });
+  function searchByDate(){
+    const year = document.getElementById("year").value;
+    const month = document.getElementById("month").value;
+    const date = new Date;
+    const thisYear = date.getFullYear();
+    if(parseInt(year)>=2000&parseInt(year)<=thisYear&parseInt(month)>0&parseInt(month)<=12){
+      location.href='/adminMode/annualHolidayList?year='+year+'&month='+month;
+    }
+    else if(!year||!month) {
+      alert("연도와 월을 모두 입력해주세요.");
+    }
+    else {
+        alert("검색날짜 범위가 초과되었습니다. 다시 입력해주세요.");
+    }
+  }
+
+</script>
 </html>

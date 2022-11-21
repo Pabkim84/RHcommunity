@@ -18,7 +18,7 @@
     <select id="findLastDateByNumId" parameterType="Long" resultType="holiday">
         SELECT * FROM annualHoliday_table WHERE numId=#{id} AND id=(SELECT MAX(id) FROM annualHoliday_table WHERE numId=#{id})
     </select>
-    <select id="findAllByMonth" parameterType="int" resultType="holidayAdmin">
-        SELECT  a.numId, m.memberName, m.memberDept, m.memberPosition, a.holidayDate, m.memberEmail, m.memberMobile FROM annualHoliday_table a JOIN members_table m ON a.numId=m.id WHERE date_format(holidayDate, '%m')=#{month}
+    <select id="findAllByMonth" parameterType="String" resultType="holidayAdmin">
+        SELECT  a.numId, m.memberName, m.memberDept, m.memberPosition, a.holidayDate, a.totalVacations, a.usedVacations, a.restVacations,m.memberEmail, m.memberMobile FROM annualHoliday_table a JOIN members_table m ON a.numId=m.id WHERE date_format(holidayDate, '%Y-%m')=#{yearMonth} ORDER BY numId ASC, holidayDate DESC
     </select>
 </mapper>
