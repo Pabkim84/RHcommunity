@@ -230,27 +230,23 @@
     <div class="subTitle right-1"><img src="../../../resources/img/triangle.png">이번달 신입/경력 사원</div>
     <div class="main body1">
         <table class="table1">
+            <c:forEach items="${noticeList}" var="noticeDTO">
             <tr>
-                <th style="width: 70%">새롭게 수정하고 있어요</th>
-                <th style="width: 30%; color: dimgray; text-align: right; padding-right: 5px">2020.06.06.</th>
+                <th style="width: 70%">${noticeDTO.noticeTitle}</th>
+                <th style="width: 30%; color: dimgray; text-align: right; padding-right: 5px">
+                    <fmt:parseDate value="${noticeDTO.noticeCreatedDateTime}" pattern="yyyy-MM-dd" var="date"/>
+                    <fmt:formatDate value="${date}" pattern="yyyy.MM.dd"/>
+                </th>
             </tr>
-            <tr>
-                <td style="width: 70%">[추석맞이]추석연휴 잘보내세요</td>
-                <td style="width: 30%; color: dimgray; text-align: right; padding-right: 5px">2020.06.06.</td>
-
-            </tr>
-            <tr>
-                <td style="width: 70%">테스트 단계입니다</td>
-                <td style="width: 30%; color: dimgray; text-align: right; padding-right: 5px">2020.06.06.</td>
-            </tr>
-            <tr>
-                <td style="width: 70%">어떻게 만들어야 잘만들까요?</td>
-                <td style="width: 30%; color: dimgray; text-align: right; padding-right: 5px">2020.06.06.</td>
-            </tr>
-            <tr>
-                <td style="width: 70%">공지사항란</td>
-                <td style="width: 30%; color: dimgray; text-align: right; padding-right: 5px">2020.06.06.</td>
-            </tr>
+            </c:forEach>
+            <c:if test="${noticeList.size()<5}">
+                <c:forEach begin="1" end="${5-noticeList.size()}" step="1">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </c:forEach>
+            </c:if>
         </table>
     </div>
     <div class="main body2">
@@ -273,6 +269,16 @@
 <%--                    <td><fmt:formatDate pattern="yyyy-MM-dd" value="${newList.memberJoinDate}"></fmt:formatDate></td>--%>
                 </tr>
             </c:forEach>
+            <c:if test="${newList.size()<5}">
+                <c:forEach begin="1" end="${5-newList.size()}" step="1">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </c:forEach>
+            </c:if>
             </tbody>
         </table>
     </div>
