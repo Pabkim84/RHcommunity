@@ -26,7 +26,7 @@
 4. 디자인구성
 + 웹페이지지만, 프로그램 느낌이 나게끔 만들고 싶어서 고전적이고 심플한 프로그램 디자인으로 전체적인 디자인을 직접 구성하였다.
 + header, body, footer 3단계 구성으로 하였고, header에는 기본 메뉴바를 구성하여 body만 이동하게 하였으며, footer에는 광고를 넣을수 있는 배너를 만들었다. 
-![image](https://user-images.githubusercontent.com/100206566/204083146-a65a2379-1a3f-4a41-9af9-a1d1ad36a743.png)
++ ![image](https://user-images.githubusercontent.com/100206566/204083146-a65a2379-1a3f-4a41-9af9-a1d1ad36a743.png)
 
 5. 주요기능
 + 회원가입, 로그인 기능, 관리자모드, 일반모드
